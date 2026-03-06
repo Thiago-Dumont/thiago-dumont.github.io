@@ -1,173 +1,151 @@
 <!DOCTYPE html>
-<html lang="pt-BR">
+<html>
 
 <head>
 
 <meta charset="UTF-8">
-<title>Thiago Dumont | Analista de Dados</title>
-
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<!-- Open Graph (LinkedIn) -->
-<meta property="og:title" content="Thiago Dumont | Analista de Dados">
-<meta property="og:description" content="Portfólio de análise de dados, Python, SQL e automação.">
-<meta property="og:image" content="https://thiago-dumont.github.io/images/linkedin-banner.png">
-<meta property="og:url" content="https://thiago-dumont.github.io/">
+<title>Portfólio | Thiago Dumont</title>
 
 <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
 
 <style>
 
-*{
-box-sizing:border-box;
-margin:0;
-padding:0;
+html{
+scroll-behavior:smooth;
 }
 
 body{
+margin:0;
 font-family:'Poppins',sans-serif;
-background:#0a0f1f;
+background:#f4f6f9;
+color:#333;
+}
+
+/* MENU */
+
+.nav{
+background:#0f172a;
 color:white;
-line-height:1.6;
+display:flex;
+justify-content:center;
+gap:40px;
+padding:15px;
+position:sticky;
+top:0;
+}
+
+.nav a{
+color:white;
+text-decoration:none;
+font-weight:500;
 }
 
 /* HEADER */
 
 .header{
-height:70vh;
+height:40vh;
 display:flex;
 flex-direction:column;
 justify-content:center;
 align-items:center;
 text-align:center;
 
-background:
-linear-gradient(rgba(0,0,0,0.7), rgba(0,0,0,0.7)),
-url("https://images.pexels.com/photos/373543/pexels-photo-373543.jpeg");
+background-image:linear-gradient(rgba(0,0,0,0.7),rgba(0,0,0,0.7)),
+url("https://images.unsplash.com/photo-1518770660439-4636190af475");
 
 background-size:cover;
 background-position:center;
 
-border-bottom:4px solid #1ce1b3;
+color:white;
 }
 
 .profile{
-width:170px;
-height:170px;
+width:150px;
+height:150px;
 border-radius:50%;
-border:4px solid #1ce1b3;
-margin-bottom:20px;
+border:4px solid white;
 object-fit:cover;
 }
 
-.header h1{
-font-size:48px;
-color:#1ce1b3;
+h1{
+margin-top:15px;
 }
 
-.subtitle{
-color:#9fb3c8;
-margin-top:10px;
-font-size:20px;
-}
-
-.links{
-margin-top:20px;
-}
-
-.links a{
-color:white;
-margin:0 10px;
-font-weight:600;
-}
-
-.links a:hover{
-color:#1ce1b3;
-}
-
-/* SECTION */
+/* SEÇÕES */
 
 .section{
-padding:80px 12%;
-}
-
-.section h2{
+background:white;
+padding:60px;
 text-align:center;
-color:#1ce1b3;
-margin-bottom:40px;
-font-size:32px;
 }
 
-/* CARDS */
+/* HABILIDADES */
 
-.projects{
-display:grid;
-grid-template-columns:repeat(auto-fit,minmax(260px,1fr));
+.skills{
+display:flex;
+justify-content:center;
 gap:30px;
+flex-wrap:wrap;
+margin-top:30px;
+}
+
+.skill{
+background:#f1f5f9;
+padding:15px 25px;
+border-radius:8px;
+font-weight:500;
+}
+
+/* PROJETOS */
+
+.projetos{
+display:flex;
+justify-content:center;
+gap:30px;
+margin-top:40px;
+flex-wrap:wrap;
 }
 
 .card{
-background:#112241;
+background:white;
 padding:25px;
-border-radius:15px;
-transition:0.3s;
-}
-
-.card:hover{
-transform:translateY(-8px);
-box-shadow:0 10px 25px rgba(0,255,200,0.3);
-}
-
-.card h3{
-margin-bottom:10px;
-color:#1ce1b3;
-}
-
-.card p{
-font-size:14px;
-color:#d2e3f3;
-}
-
-.card a{
-display:inline-block;
-margin-top:15px;
-padding:8px 18px;
-background:#1ce1b3;
-color:#0a0f1f;
-border-radius:8px;
-font-weight:600;
-}
-
-/* SKILLS */
-
-.skill{
-margin-bottom:20px;
-}
-
-.skill-name{
-margin-bottom:5px;
-}
-
-.skill-bar{
-background:#1c2c4c;
-height:10px;
 border-radius:10px;
-overflow:hidden;
+box-shadow:0 10px 25px rgba(0,0,0,0.1);
+width:260px;
 }
 
-.skill-level{
-height:10px;
-background:#1ce1b3;
+.button{
+background:#2563eb;
+color:white;
+padding:10px 20px;
+border-radius:8px;
+text-decoration:none;
+display:inline-block;
+margin-top:10px;
+}
+
+.button:hover{
+background:#1d4ed8;
+}
+
+/* CONTATO */
+
+.contato a{
+display:block;
+margin-top:10px;
+color:#2563eb;
+text-decoration:none;
 }
 
 /* FOOTER */
 
 .footer{
-background:#070c1a;
+background:#0f172a;
+color:white;
 text-align:center;
 padding:30px;
-margin-top:40px;
-color:#8da2b5;
 }
 
 </style>
@@ -176,120 +154,95 @@ color:#8da2b5;
 
 <body>
 
+<div class="nav">
+
+<a href="#sobre">Sobre</a>
+<a href="#skills">Habilidades</a>
+<a href="#projetos">Projetos</a>
+<a href="#contato">Contato</a>
+
+</div>
+
 <div class="header">
 
-<img class="profile" src="images/foto.jpg">
+<img class="profile" src="sua_foto.jpg">
 
 <h1>Thiago Dumont</h1>
-
-<p class="subtitle">
-Analista de Dados | Python | SQL | Power BI
-</p>
-
-<div class="links">
-
-<a href="https://github.com/Thiago-Dumont">GitHub</a>
-
-<a href="https://linkedin.com">LinkedIn</a>
+<p>Cientista de Dados</p>
 
 </div>
 
-</div>
-
-<div class="section">
+<div id="sobre" class="section">
 
 <h2>Sobre mim</h2>
 
 <p>
-Sou formado em Matemática e atualmente me especializando em análise de dados,
-estatística e automação de processos com Python e RPA. Meu objetivo é transformar
-dados em decisões inteligentes.
+Sou formado em Matemática e estou em transição para a área de Ciência de Dados.
+Tenho interesse em análise de dados, estatística e aprendizado de máquina.
 </p>
 
 </div>
 
-<div class="section">
+<div id="skills" class="section">
+
+<h2>Habilidades</h2>
+
+<div class="skills">
+
+<div class="skill">Python</div>
+<div class="skill">SQL</div>
+<div class="skill">Power BI</div>
+<div class="skill">Estatística</div>
+<div class="skill">Pandas</div>
+
+</div>
+
+</div>
+
+<div id="projetos" class="section">
 
 <h2>Projetos</h2>
 
-<div class="projects">
+<div class="projetos">
 
 <div class="card">
-
-<h3>Análise de Conversão de Clientes</h3>
-
-<p>
-Projeto explorando dados de marketing para identificar fatores que aumentam
-a conversão de clientes.
-</p>
-
-<a href="https://github.com/Thiago-Dumont/Analise-Convers-o-de-Clientes">
-Ver projeto
-</a>
-
+<h3>Análise de Clientes</h3>
+<p>Análise exploratória com Python e Pandas.</p>
+<a class="button" href="https://github.com/" target="_blank">Ver projeto</a>
 </div>
 
 <div class="card">
-
-<h3>Dashboard de Vendas</h3>
-
-<p>
-Dashboard interativo para análise de métricas comerciais.
-</p>
-
-<a href="#">
-Ver projeto
-</a>
-
+<h3>Consultas SQL</h3>
+<p>Consultas analíticas em banco de dados.</p>
+<a class="button" href="https://github.com/" target="_blank">Ver projeto</a>
 </div>
 
 <div class="card">
-
-<h3>Automação com Python</h3>
-
-<p>
-Automação de tarefas repetitivas utilizando Python e RPA.
-</p>
-
-<a href="#">
-Ver projeto
-</a>
-
+<h3>Dashboard Power BI</h3>
+<p>Dashboard interativo de vendas.</p>
+<a class="button" href="https://github.com/" target="_blank">Ver projeto</a>
 </div>
 
 </div>
 
 </div>
 
-<div class="section">
+<div id="contato" class="section">
 
-<h2>Skills</h2>
+<h2>Contato</h2>
 
-<div class="skill">
-<div class="skill-name">Python</div>
-<div class="skill-bar"><div class="skill-level" style="width:80%"></div></div>
-</div>
+<div class="contato">
 
-<div class="skill">
-<div class="skill-name">SQL</div>
-<div class="skill-bar"><div class="skill-level" style="width:75%"></div></div>
-</div>
+<a href="https://github.com/" target="_blank">GitHub</a>
+<a href="https://linkedin.com/" target="_blank">LinkedIn</a>
 
-<div class="skill">
-<div class="skill-name">Power BI</div>
-<div class="skill-bar"><div class="skill-level" style="width:70%"></div></div>
-</div>
-
-<div class="skill">
-<div class="skill-name">Estatística</div>
-<div class="skill-bar"><div class="skill-level" style="width:85%"></div></div>
 </div>
 
 </div>
 
 <div class="footer">
 
-© 2026 Thiago Dumont
+<p>© 2026 | Thiago Dumont</p>
 
 </div>
 
