@@ -1,257 +1,423 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
-
 <head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>PSS 02 2025</title>
 
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <script src="https://cdn.jsdelivr.net/npm/xlsx/dist/xlsx.full.min.js"></script>
 
-<title>Thiago Dumont | Data Analyst</title>
+  <style>
+    body {
+      margin: 0;
+      font-family: Arial, sans-serif;
+      background: #eef2f7;
+      color: #222;
+    }
 
-<meta name="description"
-content="Portfólio de projetos em análise de dados utilizando Python, SQL e Power BI.">
+    .container {
+      max-width: 700px;
+      margin: auto;
+      padding: 16px;
+    }
 
-<meta property="og:title" content="Thiago Dumont | Data Analyst">
+    .topo {
+      background: linear-gradient(135deg, #2563eb, #3b82f6);
+      color: white;
+      padding: 20px;
+      border-radius: 18px;
+      text-align: center;
+      margin-bottom: 16px;
+      box-shadow: 0 8px 24px rgba(0,0,0,0.08);
+    }
 
-<meta property="og:description" content="Portfólio de projetos em análise de dados utilizando Python, SQL e Power BI com foco em análise exploratória, visualização de dados e geração de insights para tomada de decisão.">
+    .topo h1 {
+      margin: 0;
+      font-size: 26px;
+    }
 
-<meta property="og:image" content="https://thiago-dumont.github.io/Imagem3030.png?v=1">
+    .topo p {
+      margin: 6px 0 0;
+      font-size: 13px;
+    }
 
-<meta property="og:image:width" content="1200">
-<meta property="og:image:height" content="630">
+    #tituloCargos {
+      font-size: 12px;
+      margin-top: 8px;
+      opacity: 0.95;
+      line-height: 1.5;
+    }
 
-<meta property="og:url" content="https://thiago-dumont.github.io/">
+    .card {
+      background: white;
+      padding: 14px;
+      border-radius: 16px;
+      margin-bottom: 12px;
+      box-shadow: 0 6px 18px rgba(0,0,0,0.05);
+    }
 
-<meta property="og:type" content="website">
-<meta property="og:image:width" content="1200">
-<meta property="og:image:height" content="630">
-<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+    input, select {
+      width: 100%;
+      padding: 14px;
+      border-radius: 12px;
+      border: 1px solid #ccc;
+      font-size: 15px;
+      margin-bottom: 10px;
+      box-sizing: border-box;
+      background: #fff;
+    }
 
-<style>
+    button, .btn-link {
+      width: 100%;
+      padding: 14px;
+      border-radius: 12px;
+      border: none;
+      background: #2563eb;
+      color: white;
+      font-weight: bold;
+      font-size: 15px;
+      cursor: pointer;
+      text-decoration: none;
+      display: block;
+      box-sizing: border-box;
+      text-align: center;
+    }
 
-body{
-margin:0;
-font-family:'Poppins',sans-serif;
-background:#0d1117;
-color:white;
-}
+    button:active, .btn-link:active {
+      transform: scale(0.99);
+    }
 
-.container{
-max-width:1100px;
-margin:auto;
-padding:40px 20px;
-text-align:center;
-}
+    .resultado {
+      display: grid;
+      gap: 10px;
+    }
 
-.profile{
-width:150px;
-height:150px;
-border-radius:50%;
-border:3px solid #00f5ff;
-object-fit:cover;
-box-shadow:0 0 15px #00f5ff;
-}
+    .item {
+      background: white;
+      border-radius: 16px;
+      padding: 14px;
+      border: 1px solid #ddd;
+      box-shadow: 0 6px 18px rgba(0,0,0,0.04);
+    }
 
-h1{
-margin-top:20px;
-}
+    .item.destaque {
+      border: 2px solid #2563eb;
+      background: #f0f6ff;
+    }
 
-.subtitle{
-max-width:650px;
-margin:auto;
-opacity:0.85;
-}
+    .nome {
+      font-weight: bold;
+      font-size: 16px;
+      margin-bottom: 4px;
+    }
 
-.social{
-margin-top:15px;
-}
+    .cargo {
+      font-size: 13px;
+      color: #666;
+      margin-bottom: 8px;
+    }
 
-.social a{
-margin:0 10px;
-color:#00f5ff;
-font-size:18px;
-text-decoration:none;
-}
+    .info {
+      font-size: 14px;
+      margin-bottom: 4px;
+    }
 
-.about{
-max-width:700px;
-margin:40px auto;
-line-height:1.6;
-opacity:0.9;
-}
+    .msg {
+      text-align: center;
+      color: #666;
+      margin-top: 10px;
+      font-size: 14px;
+    }
 
-.skills{
-display:flex;
-flex-wrap:wrap;
-justify-content:center;
-gap:10px;
-margin-top:20px;
-}
+    .erro {
+      color: #b91c1c;
+      font-weight: bold;
+    }
 
-.skill{
-border:1px solid #00f5ff;
-padding:8px 16px;
-border-radius:8px;
-}
+    .modal-bg {
+      position: fixed;
+      inset: 0;
+      background: rgba(0,0,0,0.7);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      z-index: 9999;
+      padding: 16px;
+      box-sizing: border-box;
+    }
 
-.cards{
-display:flex;
-flex-wrap:wrap;
-gap:25px;
-justify-content:center;
-margin-top:40px;
-}
+    .modal {
+      background: white;
+      padding: 20px;
+      border-radius: 16px;
+      text-align: center;
+      max-width: 320px;
+      width: 100%;
+      box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+    }
 
-.card{
-background:#161b22;
-padding:25px;
-border-radius:15px;
-width:320px;
-text-align:left;
-}
+    .pix {
+      font-size: 20px;
+      font-weight: bold;
+      color: green;
+      margin: 12px 0;
+      word-break: break-word;
+    }
 
-.card h3{
-margin-top:0;
-}
+    .btn-secundario {
+      margin-top: 8px;
+      background: #16a34a;
+    }
 
-.button{
-display:inline-block;
-margin-top:15px;
-padding:8px 16px;
-background:#00f5ff;
-color:black;
-border-radius:6px;
-text-decoration:none;
-font-weight:600;
-}
+    .link-card {
+      background: white;
+      padding: 16px;
+      border-radius: 16px;
+      margin-bottom: 12px;
+      box-shadow: 0 6px 18px rgba(0,0,0,0.05);
+    }
 
-#grafico{
-margin-top:20px;
-}
+    .link-card h3 {
+      margin: 0 0 8px;
+      font-size: 18px;
+    }
 
-footer{
-margin-top:50px;
-opacity:0.6;
-}
-
-</style>
-
+    .link-card p {
+      margin: 0 0 12px;
+      color: #555;
+      font-size: 14px;
+    }
+  </style>
 </head>
 
 <body>
 
-<div class="container">
+  <div class="modal-bg" id="modal">
+    <div class="modal">
+      <h3>Apoie este projeto</h3>
+      <p>Se te ajudou, envie um PIX:</p>
+      <div class="pix" id="chavePix">31 99617-4800</div>
+      <button class="btn-secundario" onclick="copiarPix()">Copiar chave PIX</button>
+      <button style="margin-top:8px;" onclick="fechar()">Entrar</button>
+    </div>
+  </div>
 
-<img class="profile" src="IMG-20260305-WA0209.jpg" alt="Thiago Dumont">
+  <div class="container">
 
-<h1>Thiago Dumont</h1>
+    <div class="topo">
+      <h1>PSS 02 2025</h1>
+      <p>Nível Superior</p>
+      <p id="tituloCargos"></p>
+    </div>
 
-<p class="subtitle">
-Portfólio de projetos em Data Analytics com foco em análise exploratória,
-visualização de dados e geração de insights para tomada de decisão.
-</p>
+    <div class="link-card">
+      <h3>Agente de Educação Infantil</h3>
+      <p>Clique abaixo para abrir a página específica desse cargo.</p>
+      <a class="btn-link" href="agente-educacao-infantil.html">Abrir página do cargo</a>
+    </div>
 
-<div class="social">
+    <div class="card">
+      <input type="text" id="nome" placeholder="Coloque seu nome aqui" />
 
-<a href="https://github.com/Thiago-Dumont" target="_blank">GitHub</a>
+      <select id="cargo">
+        <option value="">Todos os cargos</option>
+      </select>
 
-<a href="https://www.linkedin.com/in/thiago-dumont-566754207" target="_blank">LinkedIn</a>
+      <button onclick="buscar()">Pesquisar</button>
 
-</div>
+      <div id="msg" class="msg"></div>
+    </div>
 
-<div class="about">
+    <div id="resultado" class="resultado"></div>
+  </div>
 
-<h2>Sobre mim</h2>
+  <script>
+    const arquivo = "resultado_extraido_atualizado.xlsx";
+    let dados = [];
 
-<p>
-Profissional com formação em matemática em transição para a área de
-análise de dados. Tenho interesse em utilizar dados para gerar insights
-estratégicos e apoiar decisões de negócio através de ferramentas como
-Python, SQL e Power BI.
-</p>
+    function fechar() {
+      document.getElementById("modal").style.display = "none";
+    }
 
-</div>
+    function abrir() {
+      document.getElementById("modal").style.display = "flex";
+    }
 
-<h2>Habilidades</h2>
+    function copiarPix() {
+      const chave = document.getElementById("chavePix").innerText;
+      navigator.clipboard.writeText(chave).then(() => {
+        alert("Chave PIX copiada: " + chave);
+      }).catch(() => {
+        alert("Não foi possível copiar automaticamente. Chave PIX: " + chave);
+      });
+    }
 
-<div class="skills">
+    function normalizar(texto) {
+      return String(texto || "")
+        .trim()
+        .toLowerCase()
+        .normalize("NFD")
+        .replace(/[\u0300-\u036f]/g, "");
+    }
 
-<div class="skill">Python</div>
-<div class="skill">SQL</div>
-<div class="skill">Power BI</div>
-<div class="skill">Machine Learning</div>
-<div class="skill">Estatística</div>
-<div class="skill">Data Visualization</div>
+    function limparTexto(texto) {
+      return String(texto || "").trim();
+    }
 
-</div>
+    function encontrarColuna(obj, possiveisNomes) {
+      const chaves = Object.keys(obj || {});
+      for (const nome of possiveisNomes) {
+        const nomeNormalizado = normalizar(nome);
+        const chaveEncontrada = chaves.find(c => normalizar(c) === nomeNormalizado);
+        if (chaveEncontrada) return chaveEncontrada;
+      }
+      return null;
+    }
 
-<h2>Projetos</h2>
+    function transformarLinha(linhaOriginal) {
+      const colNome = encontrarColuna(linhaOriginal, ["Nome"]);
+      const colCargo = encontrarColuna(linhaOriginal, ["Cargo"]);
+      const colClassificacao = encontrarColuna(linhaOriginal, [
+        "Classificação",
+        "Classificacao",
+        "Classificação Geral",
+        "Classificacao Geral"
+      ]);
+      const colCotaNegro = encontrarColuna(linhaOriginal, [
+        "Classificação Cota Negro",
+        "Classificacao Cota Negro",
+        "RESERVA DE VAGAS AUTODECLARADOS PRETOS OU PARDOS"
+      ]);
+      const colPcd = encontrarColuna(linhaOriginal, [
+        "RESERVA DE VAGAS PESSOA COM DEFICIÊNCIA",
+        "RESERVA DE VAGAS PESSOA COM DEFICIENCIA",
+        "PcD",
+        "PCD"
+      ]);
 
-<div class="cards">
+      return {
+        Nome: limparTexto(colNome ? linhaOriginal[colNome] : ""),
+        Cargo: limparTexto(colCargo ? linhaOriginal[colCargo] : ""),
+        Classificacao: limparTexto(colClassificacao ? linhaOriginal[colClassificacao] : ""),
+        CotaNegro: limparTexto(colCotaNegro ? linhaOriginal[colCotaNegro] : ""),
+        PCD: limparTexto(colPcd ? linhaOriginal[colPcd] : "")
+      };
+    }
 
-<div class="card">
+    function preencherCargos() {
+      const select = document.getElementById("cargo");
+      select.innerHTML = '<option value="">Todos os cargos</option>';
 
-<h3>Análise de Conversão de Marketing</h3>
+      const cargos = [...new Set(
+        dados
+          .map(d => limparTexto(d.Cargo))
+          .filter(c => c !== "")
+      )].sort((a, b) => a.localeCompare(b, "pt-BR"));
 
-<p>
-Exemplo de análise de conversão por canal de aquisição. Esse tipo de
-análise ajuda empresas a identificar quais canais geram maior retorno
-e otimizar investimentos em marketing digital.
-</p>
+      cargos.forEach(cargo => {
+        const opt = document.createElement("option");
+        opt.value = cargo;
+        opt.textContent = cargo;
+        select.appendChild(opt);
+      });
+    }
 
-<div id="grafico"></div>
+    function mostrarCargosNoTitulo() {
+      const cargos = [...new Set(
+        dados
+          .map(d => limparTexto(d.Cargo))
+          .filter(c => c !== "")
+      )].sort((a, b) => a.localeCompare(b, "pt-BR"));
 
-</div>
+      let texto = cargos.join(" • ");
+      if (texto.length > 180) {
+        texto = texto.substring(0, 180) + "...";
+      }
 
-<div class="card">
+      document.getElementById("tituloCargos").innerText = texto || "Cargos não encontrados no arquivo.";
+    }
 
-<h3>Análise Exploratória de Dados</h3>
+    function buscar() {
+      abrir();
 
-<p>
-Projeto de exploração de dados utilizando Python para identificar
-padrões e gerar insights relevantes para tomada de decisão.
-</p>
+      const nomeDigitado = normalizar(document.getElementById("nome").value);
+      const cargoSelecionado = limparTexto(document.getElementById("cargo").value);
 
-<a class="button"
-href="https://github.com/Thiago-Dumont"
-target="_blank">
+      const div = document.getElementById("resultado");
+      const msg = document.getElementById("msg");
 
-Ver projeto
+      div.innerHTML = "";
+      msg.innerHTML = "";
 
-</a>
+      let resultado = [...dados];
 
-</div>
+      if (nomeDigitado) {
+        resultado = resultado.filter(p => normalizar(p.Nome).includes(nomeDigitado));
+      }
 
-</div>
+      if (cargoSelecionado) {
+        resultado = resultado.filter(p => limparTexto(p.Cargo) === cargoSelecionado);
+      }
 
-<footer>
+      if (resultado.length === 0) {
+        msg.innerHTML = "Nenhum resultado encontrado.";
+        return;
+      }
 
-<p>© 2026 | Thiago Dumont</p>
+      resultado.forEach(p => {
+        div.innerHTML += `
+          <div class="item destaque">
+            <div class="nome">${p.Nome || "-"}</div>
+            <div class="cargo">${p.Cargo || ""}</div>
+            <div class="info"><strong>Classificação:</strong> ${p.Classificacao || "-"}</div>
+            <div class="info"><strong>Cota Negro:</strong> ${p.CotaNegro || "-"}</div>
+            <div class="info"><strong>PCD:</strong> ${p.PCD || "-"}</div>
+          </div>
+        `;
+      });
 
-</footer>
+      msg.innerHTML = `${resultado.length} resultado(s) encontrado(s).`;
+    }
 
-</div>
+    async function carregarExcel() {
+      const msg = document.getElementById("msg");
 
-<script src="https://cdn.plot.ly/plotly-latest.min.js"></script>
+      try {
+        const resposta = await fetch(arquivo);
 
-<script>
+        if (!resposta.ok) {
+          throw new Error("Arquivo não encontrado: " + arquivo);
+        }
 
-var dados=[{
-x:["Google Ads","Instagram","Email","Orgânico"],
-y:[3.2,2.1,5.4,4.0],
-type:"bar"
-}];
+        const data = await resposta.arrayBuffer();
+        const wb = XLSX.read(data, { type: "array" });
 
-var layout={
-title:"Taxa de Conversão por Canal (%)",
-xaxis:{title:"Canal"},
-yaxis:{title:"Conversão (%)"}
-};
+        if (!wb.SheetNames || wb.SheetNames.length === 0) {
+          throw new Error("O Excel não possui abas.");
+        }
 
-Plotly.newPlot("grafico",dados,layout);
+        const ws = wb.Sheets[wb.SheetNames[0]];
+        const bruto = XLSX.utils.sheet_to_json(ws, { defval: "" });
 
-</script>
+        dados = bruto
+          .map(transformarLinha)
+          .filter(item => item.Nome !== "");
+
+        if (dados.length === 0) {
+          throw new Error("Nenhum dado válido foi encontrado na primeira aba.");
+        }
+
+        preencherCargos();
+        mostrarCargosNoTitulo();
+        msg.innerHTML = "Arquivo carregado com sucesso.";
+      } catch (erro) {
+        console.error(erro);
+        msg.innerHTML = `<span class="erro">Erro ao carregar o Excel: ${erro.message}</span>`;
+      }
+    }
+
+    carregarExcel();
+  </script>
 
 </body>
-
 </html>
