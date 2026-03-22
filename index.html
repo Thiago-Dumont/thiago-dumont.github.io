@@ -3,245 +3,271 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Thiago Dumont | Estrategista de Dados</title>
+  <title>THIAGO DUMONT | DATA ÁPICE</title>
 
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600&family=Playfair+Display:ital,wght@0,700;0,900;1,400&display=swap" rel="stylesheet" />
-
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;600;800&family=Space+Grotesk:wght@500;700&display=swap" rel="stylesheet" />
+  
   <style>
     :root {
-      --bg: #fcfcfc;
-      --text-main: #0a101e;
-      --text-muted: #545b6a;
-      --accent: #1a3a6d;
-      --border: #e2e8f0;
-      --max-width: 1100px;
+      --bg: #030508;
+      --card: rgba(15, 23, 42, 0.6);
+      --primary: #38bdf8; /* Sky Blue */
+      --accent: #818cf8; /* Indigo */
+      --text: #f8fafc;
+      --border: rgba(255, 255, 255, 0.1);
     }
 
-    * { box-sizing: border-box; margin: 0; padding: 0; }
+    * { box-sizing: border-box; margin: 0; padding: 0; cursor: default; }
     html { scroll-behavior: smooth; }
 
     body {
       background-color: var(--bg);
-      color: var(--text-main);
-      font-family: 'Inter', sans-serif;
-      line-height: 1.8;
-      -webkit-font-smoothing: antialiased;
+      color: var(--text);
+      font-family: 'Plus Jakarta Sans', sans-serif;
+      overflow-x: hidden;
+      line-height: 1.6;
     }
 
-    .container {
-      width: min(100% - 80px, var(--max-width));
-      margin: 0 auto;
+    /* --- Símbolo Ápice Animado --- */
+    .apice-bg {
+      position: fixed;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      width: 600px;
+      height: 600px;
+      background: radial-gradient(circle, rgba(56, 189, 248, 0.08) 0%, transparent 70%);
+      z-index: -1;
+      pointer-events: none;
     }
 
-    /* --- NAVEGAÇÃO --- */
+    .apice-logo-fixed {
+      position: absolute;
+      top: -100px;
+      right: -50px;
+      font-size: 40rem;
+      font-weight: 800;
+      color: rgba(255, 255, 255, 0.02);
+      user-select: none;
+      z-index: -1;
+    }
+
+    /* --- Navegação --- */
     nav {
-      padding: 40px 0;
-      border-bottom: 1px solid var(--border);
+      padding: 30px 0;
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      backdrop-filter: blur(10px);
     }
 
     .nav-inner {
+      width: min(100% - 60px, 1200px);
+      margin: 0 auto;
       display: flex;
       justify-content: space-between;
-      align-items: baseline;
+      align-items: center;
     }
 
-    .nav-logo {
-      font-family: 'Playfair Display', serif;
-      font-size: 1.8rem;
-      font-weight: 900;
-      color: var(--text-main);
+    .logo-text {
+      font-family: 'Space Grotesk', sans-serif;
+      font-weight: 700;
+      font-size: 1.5rem;
+      letter-spacing: -1px;
     }
 
-    .nav-links { display: flex; gap: 40px; }
-    .nav-links a {
-      text-decoration: none;
-      color: var(--text-muted);
-      font-size: 0.9rem;
-      text-transform: uppercase;
-      letter-spacing: 1.5px;
-    }
+    .logo-symbol { color: var(--primary); margin-right: 5px; }
 
-    /* --- HERO --- */
+    /* --- Hero Section --- */
     .hero {
-      padding: 100px 0 60px;
-      max-width: 950px;
-    }
-
-    .hero span {
-      display: block;
-      font-size: 0.9rem;
-      text-transform: uppercase;
-      letter-spacing: 3px;
-      color: var(--accent);
-      margin-bottom: 20px;
-      font-weight: 600;
+      height: 85vh;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      width: min(100% - 60px, 1200px);
+      margin: 0 auto;
     }
 
     .hero h1 {
-      font-family: 'Playfair Display', serif;
-      font-size: clamp(3rem, 7vw, 5rem);
-      line-height: 1.1;
-      margin-bottom: 30px;
-      font-weight: 900;
-    }
-
-    /* --- TECNOLOGIAS (ESTILO MARCADOR CLÁSSICO) --- */
-    .tech-grid {
-      display: flex;
-      gap: 12px;
-      flex-wrap: wrap;
-      margin-bottom: 40px;
-    }
-
-    .tech-badge {
-      font-size: 0.75rem;
+      font-family: 'Space Grotesk', sans-serif;
+      font-size: clamp(3rem, 10vw, 6rem);
+      line-height: 0.9;
+      margin-bottom: 25px;
       font-weight: 700;
-      letter-spacing: 1.2px;
-      text-transform: uppercase;
-      padding: 8px 18px;
-      border: 1px solid var(--text-main);
-      color: var(--text-main);
+    }
+
+    .gradient-text {
+      background: linear-gradient(to right, #fff, var(--primary), var(--accent));
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+
+    /* --- Marcadores Tecnológicos (v2026) --- */
+    .tech-stack {
+      display: flex;
+      gap: 15px;
+      flex-wrap: wrap;
+      margin-top: 40px;
+    }
+
+    .tech-pill {
+      padding: 10px 22px;
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: 50px;
+      font-size: 0.85rem;
+      font-weight: 600;
+      letter-spacing: 1px;
+      transition: 0.4s cubic-bezier(0.23, 1, 0.32, 1);
       display: flex;
       align-items: center;
       gap: 8px;
-      transition: 0.3s;
     }
 
-    .tech-badge:hover {
-      background: var(--text-main);
-      color: #fff;
+    .tech-pill:hover {
+      border-color: var(--primary);
+      transform: translateY(-5px);
+      box-shadow: 0 10px 20px rgba(56, 189, 248, 0.15);
+      background: rgba(56, 189, 248, 0.05);
+      cursor: pointer;
     }
 
-    /* Cores sutis para remeter à imagem enviada, mas mantendo a classe */
-    .tech-python { border-left: 5px solid #3776ab; }
-    .tech-pandas { border-left: 5px solid #150458; }
-    .tech-sql { border-left: 5px solid #00758f; }
-    .tech-excel { border-left: 5px solid #1d6f42; }
-    .tech-web { border-left: 5px solid #e34f26; }
+    .dot { width: 8px; height: 8px; border-radius: 50%; }
 
-    /* --- PROJETOS --- */
-    .section-title {
-      font-family: 'Playfair Display', serif;
-      font-size: 2.5rem;
-      margin: 80px 0 40px;
-      padding-bottom: 15px;
-      border-bottom: 2px solid var(--text-main);
-      display: inline-block;
-    }
-
-    .project-item {
+    /* --- Grid de Experiência --- */
+    .section { padding: 100px 0; }
+    
+    .grid {
       display: grid;
-      grid-template-columns: 280px 1fr;
-      gap: 60px;
-      padding: 50px 0;
-      border-bottom: 1px solid var(--border);
+      grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+      gap: 25px;
     }
 
-    .project-meta {
-      font-family: 'Playfair Display', serif;
-      font-style: italic;
-      font-size: 1.3rem;
-      color: var(--accent);
+    .card {
+      background: var(--card);
+      border: 1px solid var(--border);
+      padding: 40px;
+      border-radius: 24px;
+      transition: 0.4s;
+      position: relative;
+      overflow: hidden;
     }
 
-    .project-content h3 { font-size: 1.7rem; margin-bottom: 12px; }
-    .project-content p { color: var(--text-muted); font-size: 1.1rem; }
+    .card:hover {
+      background: rgba(15, 23, 42, 0.9);
+      border-color: rgba(56, 189, 248, 0.4);
+    }
 
-    /* --- CONTATO --- */
-    .contact-section { padding: 120px 0; text-align: center; }
-    .contact-box { border: 1px solid var(--border); padding: 70px 30px; }
-    .contact-box h2 { font-family: 'Playfair Display', serif; font-size: 3rem; margin-bottom: 20px; }
+    .card h3 { font-family: 'Space Grotesk', sans-serif; font-size: 1.8rem; margin-bottom: 15px; }
+    .card p { color: #94a3b8; font-size: 1.1rem; }
 
-    .btn-classic {
-      display: inline-block;
-      margin-top: 30px;
-      padding: 16px 45px;
-      background: var(--text-main);
-      color: #fff;
+    /* --- Botão Magnético --- */
+    .cta-btn {
+      margin-top: 50px;
+      padding: 20px 45px;
+      background: var(--text);
+      color: var(--bg);
+      border-radius: 12px;
+      font-weight: 700;
+      font-family: 'Space Grotesk', sans-serif;
       text-decoration: none;
-      font-weight: 600;
+      display: inline-block;
       transition: 0.3s;
+      font-size: 1.2rem;
     }
 
-    footer { padding: 40px 0; border-top: 1px solid var(--border); text-align: center; font-size: 0.8rem; letter-spacing: 2px; color: var(--text-muted); }
+    .cta-btn:hover {
+      background: var(--primary);
+      transform: scale(1.05);
+      cursor: pointer;
+    }
 
-    @media (max-width: 900px) {
-      .project-item { grid-template-columns: 1fr; gap: 20px; }
-      .nav-links { display: none; }
+    footer {
+      padding: 80px 0;
+      text-align: center;
+      border-top: 1px solid var(--border);
+      color: #475569;
+      font-weight: 600;
+      letter-spacing: 2px;
+    }
+
+    /* Animação suave de entrada */
+    @keyframes fadeInUp {
+      from { opacity: 0; transform: translateY(30px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    .reveal { animation: fadeInUp 1s forwards; }
+
+    @media (max-width: 800px) {
+      .hero h1 { font-size: 3.5rem; }
     }
   </style>
 </head>
 <body>
 
+  <div class="apice-bg"></div>
+  <div class="apice-logo-fixed">Δ</div>
+
   <nav>
-    <div class="container nav-inner">
-      <div class="nav-logo">T. Dumont</div>
-      <div class="nav-links">
-        <a href="#sobre">Resumo</a>
-        <a href="#projetos">Trabalhos</a>
-        <a href="#contato">Contato</a>
-      </div>
+    <div class="nav-inner">
+      <div class="logo-text"><span class="logo-symbol">Δ</span> DATA ÁPICE</div>
+      <div style="font-weight: 600; color: var(--primary); font-size: 0.9rem;">THIAGO DUMONT</div>
     </div>
   </nav>
 
   <main class="container">
     
-    <section class="hero" id="sobre">
-      <span>Matemático & Estrategista de Dados</span>
-      <h1>Decisões fundamentadas através da ciência de dados.</h1>
-      
-      <div class="tech-grid">
-        <div class="tech-badge tech-python">Python</div>
-        <div class="tech-badge tech-pandas">Pandas</div>
-        <div class="tech-badge tech-sql">SQL</div>
-        <div class="tech-badge tech-excel">Excel</div>
-        <div class="tech-badge tech-web">HTML/CSS</div>
-        <div class="tech-badge">JavaScript</div>
-      </div>
-
-      <p style="font-size: 1.3rem; color: var(--text-muted); font-weight: 300;">
-        Especialista em arquitetura de dados e automação. Minha abordagem une o rigor matemático à engenharia moderna para construir sistemas de informação escaláveis.
+    <section class="hero reveal">
+      <h1>CONSTRUINDO O <br><span class="gradient-text">PRÓXIMO NÍVEL</span> <br>DOS SEUS DADOS.</h1>
+      <p style="font-size: 1.5rem; color: #94a3b8; max-width: 800px; margin-top: 20px;">
+        Matemático e Arquiteto de Dados focado em transformar complexidade em pipelines de alta performance.
       </p>
-    </section>
 
-    <section id="projetos">
-      <h2 class="section-title">Trabalhos Selecionados</h2>
-
-      <div class="project-item">
-        <div class="project-meta">Case 01_Análise</div>
-        <div class="project-content">
-          <h3>Funil de Conversão iFood</h3>
-          <p>Modelagem estatística para análise de churn e otimização de performance transacional em larga escala.</p>
-        </div>
+      <div class="tech-stack">
+        <div class="tech-pill"><div class="dot" style="background: #3776ab;"></div> PYTHON</div>
+        <div class="tech-pill"><div class="dot" style="background: #150458;"></div> PANDAS</div>
+        <div class="tech-pill"><div class="dot" style="background: #00758f;"></div> SQL_ENGINE</div>
+        <div class="tech-pill"><div class="dot" style="background: #1d6f42;"></div> EXCEL_PRO</div>
+        <div class="tech-pill"><div class="dot" style="background: #e34f26;"></div> AUTOMATION</div>
       </div>
 
-      <div class="project-item">
-        <div class="project-meta">Case 02_Engenharia</div>
-        <div class="project-content">
-          <h3>Observatório de Dados MG</h3>
-          <p>Pipeline completo de Web Scraping e SQL para monitoramento e estruturação de dados de editais públicos.</p>
-        </div>
-      </div>
+      <a href="mailto:data.apice@gmail.com" class="cta-btn">INICIAR CONEXÃO</a>
     </section>
 
-    <section id="contato" class="contact-section">
-      <div class="contact-box">
-        <h2>Vamos conversar?</h2>
-        <p style="font-size: 1.2rem; color: var(--text-muted);">
-          Atuando na interseção entre análise de dados e eficiência operacional.<br>
-          <strong>data.apice@gmail.com</strong>
-        </p>
-        <a href="mailto:data.apice@gmail.com" class="btn-classic">Iniciar Correspondência</a>
+    <section class="section">
+      <h2 style="font-family: 'Space Grotesk'; font-size: 3rem; margin-bottom: 50px;">PROJETOS EM DESTAQUE</h2>
+      <div class="grid">
+        <div class="card">
+          <h3>Funil iFood</h3>
+          <p>Modelagem estatística para predição de comportamento e otimização de conversão.</p>
+        </div>
+        <div class="card">
+          <h3>Observatório MG</h3>
+          <p>Pipeline de extração automatizada de dados públicos com arquitetura SQL escalável.</p>
+        </div>
+        <div class="card">
+          <h3>Parsing Inteligente</h3>
+          <p>Motores de extração via Regex para documentos não estruturados em escala industrial.</p>
+        </div>
       </div>
     </section>
 
   </main>
 
   <footer>
-    <p>Thiago Dumont // MG // 2026</p>
+    THIAGO DUMONT // DATA.APICE@GMAIL.COM // 2026
   </footer>
+
+  <script>
+    // Pequeno efeito magnético para o símbolo de fundo seguir o scroll levemente
+    window.addEventListener('scroll', () => {
+      const scroll = window.pageYOffset;
+      document.querySelector('.apice-logo-fixed').style.transform = `translateY(${scroll * 0.2}px)`;
+    });
+  </script>
 
 </body>
 </html>
