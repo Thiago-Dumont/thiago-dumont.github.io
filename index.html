@@ -1,650 +1,135 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-  <title>Thiago Dumont | Portfólio em Dados</title>
+<title>Thiago Dumont | Dados, Automação e Análise</title>
 
-  <meta
-    name="description"
-    content="Portfólio de Thiago Dumont com projetos em análise de dados, Python, SQL, ETL, visualização de dados e automação."
-  />
+<meta name="description" content="Matemático atuando com análise de dados, ETL, automação e projetos aplicados com Python e SQL.">
 
-  <meta property="og:title" content="Thiago Dumont | Portfólio em Dados" />
-  <meta
-    property="og:description"
-    content="Projetos em análise de dados, Python, SQL, ETL, automação e visualização de dados."
-  />
-  <meta property="og:image" content="https://thiago-dumont.github.io/Imagem3030.png?v=1" />
-  <meta property="og:image:width" content="1200" />
-  <meta property="og:image:height" content="630" />
-  <meta property="og:url" content="https://thiago-dumont.github.io/" />
-  <meta property="og:type" content="website" />
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;800&display=swap" rel="stylesheet">
 
-  <link rel="preconnect" href="https://fonts.googleapis.com" />
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link
-    href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap"
-    rel="stylesheet"
-  />
+<style>
+body {
+margin:0;
+font-family:'Poppins',sans-serif;
+background:#0d1117;
+color:white;
+}
 
-  <style>
-    :root {
-      --bg: #0b1220;
-      --bg-soft: #111a2d;
-      --card: rgba(255, 255, 255, 0.06);
-      --card-border: rgba(255, 255, 255, 0.12);
-      --text: #f8fafc;
-      --muted: #cbd5e1;
-      --primary: #3b82f6;
-      --primary-dark: #2563eb;
-      --accent: #22c55e;
-      --shadow: 0 20px 60px rgba(0, 0, 0, 0.35);
-      --radius: 22px;
-      --max: 1160px;
-    }
+.container {
+max-width:1100px;
+margin:auto;
+padding:40px 20px;
+}
 
-    * {
-      box-sizing: border-box;
-    }
+h1 {
+font-size:3rem;
+margin-bottom:10px;
+}
 
-    html {
-      scroll-behavior: smooth;
-    }
+h2 {
+margin-top:40px;
+font-size:1.8rem;
+}
 
-    body {
-      margin: 0;
-      font-family: "Poppins", sans-serif;
-      background:
-        radial-gradient(circle at top left, rgba(59, 130, 246, 0.20), transparent 30%),
-        radial-gradient(circle at top right, rgba(34, 197, 94, 0.10), transparent 22%),
-        linear-gradient(180deg, #08101d 0%, #0b1220 40%, #0f172a 100%);
-      color: var(--text);
-      line-height: 1.6;
-    }
+p {
+opacity:0.8;
+line-height:1.6;
+}
 
-    a {
-      color: inherit;
-      text-decoration: none;
-    }
+.btn {
+display:inline-block;
+margin-top:20px;
+padding:12px 24px;
+background:#2563eb;
+color:white;
+border-radius:8px;
+text-decoration:none;
+}
 
-    .container {
-      width: min(100% - 32px, var(--max));
-      margin: 0 auto;
-    }
+.section {
+margin-top:60px;
+}
 
-    .topbar {
-      position: sticky;
-      top: 0;
-      z-index: 50;
-      backdrop-filter: blur(12px);
-      background: rgba(8, 16, 29, 0.72);
-      border-bottom: 1px solid rgba(255, 255, 255, 0.08);
-    }
+.card {
+background:#111827;
+padding:20px;
+border-radius:10px;
+margin-top:20px;
+}
 
-    .topbar-inner {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      gap: 16px;
-      padding: 14px 0;
-    }
-
-    .brand {
-      font-weight: 700;
-      font-size: 1rem;
-      letter-spacing: 0.2px;
-    }
-
-    .nav {
-      display: flex;
-      gap: 18px;
-      flex-wrap: wrap;
-    }
-
-    .nav a {
-      font-size: 0.95rem;
-      color: var(--muted);
-      transition: 0.25s ease;
-    }
-
-    .nav a:hover {
-      color: var(--text);
-    }
-
-    .hero {
-      padding: 72px 0 34px;
-    }
-
-    .hero-grid {
-      display: grid;
-      grid-template-columns: 1.3fr 0.9fr;
-      gap: 28px;
-      align-items: center;
-    }
-
-    .hero-card,
-    .info-card,
-    .project-card,
-    .contact-card {
-      background: var(--card);
-      border: 1px solid var(--card-border);
-      border-radius: var(--radius);
-      box-shadow: var(--shadow);
-    }
-
-    .hero-card {
-      padding: 38px;
-    }
-
-    .tag {
-      display: inline-flex;
-      align-items: center;
-      gap: 8px;
-      padding: 8px 14px;
-      border-radius: 999px;
-      background: rgba(59, 130, 246, 0.14);
-      color: #bfdbfe;
-      font-size: 0.9rem;
-      font-weight: 500;
-      margin-bottom: 18px;
-      border: 1px solid rgba(59, 130, 246, 0.22);
-    }
-
-    h1 {
-      font-size: clamp(2.2rem, 5vw, 4.2rem);
-      line-height: 1.05;
-      margin: 0 0 18px;
-      font-weight: 800;
-      letter-spacing: -1px;
-    }
-
-    .hero p {
-      margin: 0;
-      font-size: 1.05rem;
-      color: var(--muted);
-      max-width: 720px;
-    }
-
-    .hero-actions {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 14px;
-      margin-top: 26px;
-    }
-
-    .btn {
-      display: inline-flex;
-      align-items: center;
-      justify-content: center;
-      min-height: 48px;
-      padding: 0 20px;
-      border-radius: 14px;
-      font-weight: 600;
-      font-size: 0.98rem;
-      transition: 0.25s ease;
-      border: 1px solid transparent;
-    }
-
-    .btn-primary {
-      background: linear-gradient(135deg, var(--primary), var(--primary-dark));
-      color: white;
-    }
-
-    .btn-primary:hover {
-      transform: translateY(-2px);
-      box-shadow: 0 14px 30px rgba(37, 99, 235, 0.28);
-    }
-
-    .btn-secondary {
-      background: rgba(255, 255, 255, 0.06);
-      color: var(--text);
-      border-color: rgba(255, 255, 255, 0.12);
-    }
-
-    .btn-secondary:hover {
-      background: rgba(255, 255, 255, 0.1);
-    }
-
-    .info-card {
-      padding: 28px;
-    }
-
-    .profile-image {
-      width: 100%;
-      aspect-ratio: 1 / 1;
-      border-radius: 20px;
-      object-fit: cover;
-      border: 1px solid rgba(255,255,255,0.10);
-      margin-bottom: 18px;
-      background: #111827;
-    }
-
-    .info-title {
-      font-size: 1.3rem;
-      font-weight: 700;
-      margin: 0 0 8px;
-    }
-
-    .info-text {
-      margin: 0;
-      color: var(--muted);
-      font-size: 0.96rem;
-    }
-
-    .mini-stats {
-      display: grid;
-      grid-template-columns: repeat(2, 1fr);
-      gap: 12px;
-      margin-top: 20px;
-    }
-
-    .mini-stat {
-      background: rgba(255,255,255,0.05);
-      border: 1px solid rgba(255,255,255,0.08);
-      border-radius: 16px;
-      padding: 14px;
-    }
-
-    .mini-stat strong {
-      display: block;
-      font-size: 1.1rem;
-      margin-bottom: 4px;
-    }
-
-    .mini-stat span {
-      color: var(--muted);
-      font-size: 0.9rem;
-    }
-
-    section {
-      padding: 22px 0 12px;
-    }
-
-    .section-head {
-      margin-bottom: 22px;
-    }
-
-    .section-head h2 {
-      font-size: clamp(1.5rem, 3vw, 2.3rem);
-      margin: 0 0 10px;
-      font-weight: 800;
-      letter-spacing: -0.5px;
-    }
-
-    .section-head p {
-      margin: 0;
-      color: var(--muted);
-      max-width: 760px;
-    }
-
-    .about-grid {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 18px;
-    }
-
-    .project-grid {
-      display: grid;
-      grid-template-columns: repeat(3, 1fr);
-      gap: 18px;
-    }
-
-    .project-card {
-      padding: 24px;
-      display: flex;
-      flex-direction: column;
-      gap: 14px;
-    }
-
-    .project-badge {
-      display: inline-block;
-      align-self: flex-start;
-      padding: 6px 12px;
-      border-radius: 999px;
-      font-size: 0.82rem;
-      font-weight: 600;
-      color: #dbeafe;
-      background: rgba(59, 130, 246, 0.14);
-      border: 1px solid rgba(59, 130, 246, 0.22);
-    }
-
-    .project-card h3 {
-      margin: 0;
-      font-size: 1.2rem;
-    }
-
-    .project-card p {
-      margin: 0;
-      color: var(--muted);
-      font-size: 0.95rem;
-      flex-grow: 1;
-    }
-
-    .stack {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 8px;
-    }
-
-    .stack span {
-      padding: 7px 10px;
-      border-radius: 999px;
-      font-size: 0.82rem;
-      color: #e2e8f0;
-      background: rgba(255,255,255,0.06);
-      border: 1px solid rgba(255,255,255,0.08);
-    }
-
-    .project-link {
-      display: inline-flex;
-      align-items: center;
-      gap: 8px;
-      font-weight: 600;
-      color: #93c5fd;
-      margin-top: 4px;
-    }
-
-    .project-link:hover {
-      color: #dbeafe;
-    }
-
-    .contact-card {
-      padding: 30px;
-      text-align: center;
-      margin: 10px 0 38px;
-    }
-
-    .contact-card h2 {
-      margin: 0 0 10px;
-      font-size: 2rem;
-    }
-
-    .contact-card p {
-      color: var(--muted);
-      margin: 0 auto 20px;
-      max-width: 720px;
-    }
-
-    footer {
-      padding: 18px 0 38px;
-      color: #94a3b8;
-      font-size: 0.92rem;
-      text-align: center;
-    }
-
-    @media (max-width: 980px) {
-      .hero-grid,
-      .about-grid,
-      .project-grid {
-        grid-template-columns: 1fr;
-      }
-
-      .hero {
-        padding-top: 42px;
-      }
-
-      .hero-card,
-      .info-card,
-      .project-card,
-      .contact-card {
-        padding: 22px;
-      }
-
-      .nav {
-        display: none;
-      }
-    }
-  </style>
+</style>
 </head>
+
 <body>
-  <header class="topbar">
-    <div class="container topbar-inner">
-      <a href="#" class="brand">Thiago Dumont</a>
-      <nav class="nav">
-        <a href="#sobre">Sobre</a>
-        <a href="#projetos">Projetos</a>
-        <a href="#contato">Contato</a>
-      </nav>
-    </div>
-  </header>
 
-  <main>
-    <section class="hero">
-      <div class="container hero-grid">
-        <div class="hero-card">
-          <div class="tag">Portfólio em Dados</div>
-          <h1>Transformando dados em soluções práticas e análises que apoiam decisões.</h1>
-          <p>
-            Sou Thiago Dumont, matemático com foco em análise de dados, ETL, automação
-            e projetos desenvolvidos com Python, SQL e visualização de dados. Meu objetivo é
-            transformar dados brutos em informação útil, acessível e estratégica.
-          </p>
+<div class="container">
 
-          <div class="hero-actions">
-            <a
-              class="btn btn-primary"
-              href="https://github.com/Thiago-Dumont"
-              target="_blank"
-              rel="noopener noreferrer"
-            >
-              Ver GitHub
-            </a>
+<h1>Thiago Dumont</h1>
+<p>Matemático • Dados • Automação • ETL • Python</p>
 
-            <a
-              class="btn btn-secondary"
-              href="https://www.linkedin.com/"
-              target="_blank"
-              rel="noopener noreferrer"
-            >
-              Ver LinkedIn
-            </a>
-          </div>
-        </div>
+<a class="btn" href="https://github.com/Thiago-Dumont" target="_blank">Ver GitHub</a>
+<a class="btn" href="SEU_LINK_LINKEDIN" target="_blank">LinkedIn</a>
 
-        <aside class="info-card">
-          <img
-            class="profile-image"
-            src="Imagem3030.png"
-            alt="Foto ou identidade visual de Thiago Dumont"
-          />
+<div class="section">
+<h2>O que eu faço</h2>
+<p>
+Trabalho transformando dados brutos em informação útil para tomada de decisão.
+Desenvolvo projetos com foco em análise, automação e estruturação de dados, utilizando Python, SQL e técnicas de ETL.
+</p>
+</div>
 
-          <h2 class="info-title">Thiago Dumont</h2>
-          <p class="info-text">
-            Matemático • Cientista de Dados em formação • Python • ETL • Análise de Dados
-          </p>
+<div class="section">
+<h2>Projetos com impacto</h2>
 
-          <div class="mini-stats">
-            <div class="mini-stat">
-              <strong>Python</strong>
-              <span>Automação, ETL e análise</span>
-            </div>
-            <div class="mini-stat">
-              <strong>SQL</strong>
-              <span>Consulta e estruturação</span>
-            </div>
-            <div class="mini-stat">
-              <strong>Dados Públicos</strong>
-              <span>Projetos aplicados</span>
-            </div>
-            <div class="mini-stat">
-              <strong>Visualização</strong>
-              <span>Indicadores e painéis</span>
-            </div>
-          </div>
-        </aside>
-      </div>
-    </section>
+<div class="card">
+<h3>📊 Funil de Conversão (iFood)</h3>
+<p>
+Identifiquei o ponto de abandono dos clientes dentro do aplicativo.
+Descoberta principal: o produto mais vendido era o único com imagem, evidenciando impacto direto na conversão.
+</p>
+</div>
 
-    <section id="sobre">
-      <div class="container">
-        <div class="section-head">
-          <h2>Sobre mim</h2>
-          <p>
-            Tenho direcionado minha atuação para projetos que unem análise de dados,
-            automação e organização de informações, com foco em gerar clareza para problemas reais.
-            Trabalho principalmente com tratamento de dados, construção de indicadores,
-            extração de informações e apoio à tomada de decisão.
-          </p>
-        </div>
+<div class="card">
+<h3>📈 Vagas de Matemática MG</h3>
+<p>
+Extração e organização de dados públicos para facilitar análise de vagas.
+Transformação de dados brutos em informação acessível.
+</p>
+</div>
 
-        <div class="about-grid">
-          <div class="project-card">
-            <span class="project-badge">Foco técnico</span>
-            <h3>O que eu desenvolvo</h3>
-            <p>
-              Estruturo dados, automatizo processos repetitivos, crio análises exploratórias
-              e desenvolvo projetos com aplicação prática em cenários reais.
-            </p>
-            <div class="stack">
-              <span>Python</span>
-              <span>Pandas</span>
-              <span>SQL</span>
-              <span>ETL</span>
-              <span>Automação</span>
-            </div>
-          </div>
+<div class="card">
+<h3>⚙️ ETL com PDFs</h3>
+<p>
+Pipeline para extrair, tratar e estruturar dados de PDFs complexos.
+Geração de dados prontos para análise e uso em planilhas.
+</p>
+</div>
 
-          <div class="project-card">
-            <span class="project-badge">Objetivo</span>
-            <h3>Como gero valor</h3>
-            <p>
-              Meu foco é transformar bases desorganizadas em informação acionável,
-              facilitando leitura, acompanhamento de indicadores e geração de insights.
-            </p>
-            <div class="stack">
-              <span>Dashboards</span>
-              <span>Indicadores</span>
-              <span>Extração de dados</span>
-              <span>Limpeza de dados</span>
-            </div>
-          </div>
-        </div>
-      </div>
-    </section>
+</div>
 
-    <section id="projetos">
-      <div class="container">
-        <div class="section-head">
-          <h2>Projetos em destaque</h2>
-          <p>
-            Abaixo estão exemplos de projetos que demonstram minha atuação com dados,
-            automação e análise aplicada.
-          </p>
-        </div>
+<div class="section">
+<h2>Diferencial</h2>
+<p>
+Minha formação em matemática me permite entender padrões e estruturas nos dados,
+enquanto aplico ferramentas modernas para transformar isso em soluções práticas.
+</p>
+</div>
 
-        <div class="project-grid">
-          <article class="project-card">
-            <span class="project-badge">Análise de Dados</span>
-            <h3>Funil de Conversão no iFood</h3>
-            <p>
-              Estudo para identificar em qual etapa do funil os clientes estavam desistindo
-              dentro do aplicativo, com análise das taxas de conversão entre visita, visualização,
-              sacola, revisão e compra.
-            </p>
-            <div class="stack">
-              <span>Python</span>
-              <span>Pandas</span>
-              <span>Google Colab</span>
-              <span>Visualização</span>
-            </div>
-            <a
-              class="project-link"
-              href="https://github.com/Thiago-Dumont"
-              target="_blank"
-              rel="noopener noreferrer"
-            >
-              Ver projeto →
-            </a>
-          </article>
+<div class="section">
+<h2>Contato</h2>
+<p>
+Estou aberto a oportunidades em análise de dados, automação e projetos freelance.
+</p>
 
-          <article class="project-card">
-            <span class="project-badge">Dados Públicos</span>
-            <h3>Vagas de Matemática em MG</h3>
-            <p>
-              Projeto com extração, organização e apresentação de dados sobre vagas de matemática,
-              com foco em tornar a informação mais acessível e útil para consulta e acompanhamento.
-            </p>
-            <div class="stack">
-              <span>Python</span>
-              <span>ETL</span>
-              <span>Dados Públicos</span>
-              <span>Análise</span>
-            </div>
-            <a
-              class="project-link"
-              href="https://github.com/Thiago-Dumont/vagas-matematica-mg"
-              target="_blank"
-              rel="noopener noreferrer"
-            >
-              Ver projeto →
-            </a>
-          </article>
+<a class="btn" href="https://github.com/Thiago-Dumont" target="_blank">GitHub</a>
+<a class="btn" href="SEU_LINK_LINKEDIN" target="_blank">LinkedIn</a>
 
-          <article class="project-card">
-            <span class="project-badge">Automação</span>
-            <h3>Extração e Tratamento de PDFs</h3>
-            <p>
-              Estruturação de dados a partir de arquivos PDF, tratamento de tabelas,
-              organização de colunas e geração de saídas preparadas para análise e uso em planilhas.
-            </p>
-            <div class="stack">
-              <span>Python</span>
-              <span>ETL</span>
-              <span>PDF</span>
-              <span>Planilhas</span>
-            </div>
-            <a
-              class="project-link"
-              href="https://github.com/Thiago-Dumont"
-              target="_blank"
-              rel="noopener noreferrer"
-            >
-              Ver projeto →
-            </a>
-          </article>
-        </div>
-      </div>
-    </section>
+</div>
 
-    <section id="contato">
-      <div class="container">
-        <div class="contact-card">
-          <h2>Vamos nos conectar</h2>
-          <p>
-            Estou construindo projetos voltados para análise de dados, automação e soluções com aplicação prática.
-            Para conhecer mais do meu trabalho, acesse meus perfis e repositórios.
-          </p>
+</div>
 
-          <div class="hero-actions" style="justify-content: center;">
-            <a
-              class="btn btn-primary"
-              href="https://github.com/Thiago-Dumont"
-              target="_blank"
-              rel="noopener noreferrer"
-            >
-              GitHub
-            </a>
-
-            <a
-              class="btn btn-secondary"
-              href="https://www.linkedin.com/"
-              target="_blank"
-              rel="noopener noreferrer"
-            >
-              LinkedIn
-            </a>
-          </div>
-        </div>
-      </div>
-    </section>
-  </main>
-
-  <footer>
-    <div class="container">
-      © 2026 Thiago Dumont • Portfólio em Dados
-    </div>
-  </footer>
 </body>
 </html>
