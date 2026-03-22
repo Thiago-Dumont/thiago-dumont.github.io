@@ -3,20 +3,20 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>THIAGO DUMONT | DATA ÁPICE</title>
+  <title>THIAGO DUMONT | DATA ÁPICE RPA</title>
 
   <link rel="preconnect" href="https://fonts.googleapis.com" />
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;600;800&family=Space+Grotesk:wght@500;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
   
   <style>
     :root {
-      --bg: #030508;
-      --card: rgba(15, 23, 42, 0.6);
+      --bg: #010409;
+      --card-bg: rgba(13, 17, 23, 0.8);
       --primary: #38bdf8;
-      --accent: #818cf8;
-      --text: #f8fafc;
-      --border: rgba(255, 255, 255, 0.1);
+      --text: #ffffff;
+      --text-dim: #94a3b8;
+      --border: rgba(56, 189, 248, 0.2);
     }
 
     * { box-sizing: border-box; margin: 0; padding: 0; }
@@ -26,30 +26,31 @@
       background-color: var(--bg);
       color: var(--text);
       font-family: 'Plus Jakarta Sans', sans-serif;
+      line-height: 1.6;
       overflow-x: hidden;
-      line-height: 1.5;
     }
 
-    /* --- Símbolo Delta de Fundo --- */
-    .apice-logo-fixed {
+    /* Marca d'água Matemática */
+    .math-bg {
       position: fixed;
-      top: 10%;
+      top: 50%;
       right: -10%;
-      font-size: clamp(20rem, 50vw, 40rem);
+      transform: translateY(-50%);
+      font-size: 40rem;
       font-weight: 800;
-      color: rgba(255, 255, 255, 0.02);
+      color: rgba(56, 189, 248, 0.02);
       z-index: -1;
-      user-select: none;
+      pointer-events: none;
     }
 
-    /* --- Navegação Corrigida --- */
     nav {
       padding: 20px 0;
       position: sticky;
       top: 0;
       z-index: 100;
-      background: rgba(3, 5, 8, 0.8);
-      backdrop-filter: blur(10px);
+      background: rgba(1, 4, 9, 0.95);
+      backdrop-filter: blur(12px);
+      border-bottom: 1px solid var(--border);
     }
 
     .nav-inner {
@@ -60,152 +61,163 @@
       align-items: center;
     }
 
-    .logo-text { font-family: 'Space Grotesk', sans-serif; font-weight: 700; font-size: 1.2rem; }
-    .logo-symbol { color: var(--primary); }
+    .logo { font-family: 'Space Grotesk', sans-serif; font-size: 1.3rem; font-weight: 700; }
+    .logo span { color: var(--primary); }
 
-    /* --- Hero (Fix de Sobreposição) --- */
     .hero {
-      padding: 60px 0;
-      min-height: 80vh;
-      display: flex;
-      flex-direction: column;
-      justify-content: center;
+      padding: clamp(40px, 10vh, 100px) 0;
       width: min(100% - 40px, 1200px);
       margin: 0 auto;
     }
 
     .hero h1 {
       font-family: 'Space Grotesk', sans-serif;
-      font-size: clamp(2.5rem, 8vw, 5.5rem);
+      font-size: clamp(2.5rem, 8vw, 5rem);
       line-height: 1;
       margin-bottom: 20px;
     }
 
-    .gradient-text {
-      background: linear-gradient(to right, #fff, var(--primary));
-      -webkit-background-clip: text;
-      -webkit-text-fill-color: transparent;
-    }
-
     .hero p {
-      font-size: clamp(1.1rem, 4vw, 1.4rem);
-      color: #94a3b8;
-      max-width: 600px;
-      margin-bottom: 30px;
-    }
-
-    /* --- Tech Stack --- */
-    .tech-stack {
-      display: flex;
-      gap: 10px;
-      flex-wrap: wrap;
+      font-size: clamp(1.1rem, 3vw, 1.3rem);
+      color: var(--text-dim);
+      max-width: 700px;
       margin-bottom: 40px;
     }
 
-    .tech-pill {
-      padding: 8px 16px;
-      background: var(--card);
-      border: 1px solid var(--border);
-      border-radius: 50px;
-      font-size: 0.75rem;
-      font-weight: 700;
+    /* --- TECH BADGES --- */
+    .tech-badges {
+      display: flex;
+      gap: 12px;
+      flex-wrap: wrap;
+      margin-bottom: 50px;
+    }
+
+    .badge {
       display: flex;
       align-items: center;
-      gap: 6px;
-    }
-
-    /* --- Botão Call to Action --- */
-    .cta-btn {
-      padding: 16px 32px;
-      background: var(--text);
-      color: var(--bg);
-      border-radius: 8px;
+      gap: 8px;
+      padding: 6px 14px;
+      border-radius: 4px;
+      font-size: 0.85rem;
       font-weight: 700;
-      text-decoration: none;
-      display: inline-block;
-      width: fit-content;
+      color: #fff;
       transition: 0.3s;
+      border: 1px solid rgba(255,255,255,0.1);
     }
 
-    /* --- Seção de Projetos --- */
-    .section {
-      padding: 80px 0;
-      width: min(100% - 40px, 1200px);
-      margin: 0 auto;
-    }
+    .badge i { font-size: 1rem; }
+    .b-python { background: #3776ab; }
+    .b-sql { background: #f29111; }
+    .b-pandas { background: #150458; }
+    .b-rpa { background: #ff4b4b; }
+    .b-excel { background: #1d6f42; }
 
+    .badge:hover { transform: translateY(-3px); filter: brightness(1.2); }
+
+    /* --- GRID PROJETOS --- */
     .grid {
       display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-      gap: 20px;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 25px;
+      width: min(100% - 40px, 1200px);
+      margin: 0 auto 80px;
     }
 
     .card {
-      background: var(--card);
+      background: var(--card-bg);
       border: 1px solid var(--border);
-      padding: 30px;
-      border-radius: 16px;
+      padding: 35px;
+      border-radius: 8px;
+      box-shadow: 0 15px 35px -15px rgba(0,0,0,0.5);
+      transition: 0.3s;
     }
 
-    .card h3 { font-family: 'Space Grotesk', sans-serif; margin-bottom: 10px; color: var(--primary); }
+    .card:hover {
+      border-color: var(--primary);
+      box-shadow: 0 0 30px rgba(56, 189, 248, 0.15);
+    }
 
-    footer { padding: 60px 0; text-align: center; color: #475569; font-size: 0.8rem; }
+    .card h3 { font-family: 'Space Grotesk', sans-serif; color: var(--primary); margin-bottom: 12px; }
 
-    /* --- Media Query Específica para Mobile --- */
+    .cta-btn {
+      display: inline-block;
+      padding: 18px 40px;
+      background: var(--primary);
+      color: var(--bg);
+      text-decoration: none;
+      font-weight: 800;
+      border-radius: 4px;
+      transition: 0.3s;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+    }
+
+    .cta-btn:hover { background: #fff; box-shadow: 0 0 20px var(--primary); }
+
+    footer {
+      padding: 60px 0;
+      text-align: center;
+      border-top: 1px solid var(--border);
+      color: var(--text-dim);
+      font-size: 0.9rem;
+    }
+
     @media (max-width: 600px) {
-      .hero { padding-top: 40px; text-align: left; }
-      .apice-logo-fixed { top: 20%; right: -20%; }
-      .nav-inner span { display: none; } /* Esconde nome longo no mobile */
+      .hero { padding-top: 20px; }
+      .nav-inner .name { display: none; }
     }
   </style>
 </head>
 <body>
 
-  <div class="apice-logo-fixed">Δ</div>
+  <div class="math-bg">Δ</div>
 
   <nav>
     <div class="nav-inner">
-      <div class="logo-text"><span class="logo-symbol">Δ</span> DATA ÁPICE</div>
-      <span style="font-weight: 600; color: var(--primary); font-size: 0.8rem;">THIAGO DUMONT</span>
+      <div class="logo"><span>Δ</span> DATA ÁPICE</div>
+      <div class="name" style="font-weight: 600; color: var(--primary); font-size: 0.8rem;">THIAGO DUMONT</div>
     </div>
   </nav>
 
   <main>
     <section class="hero">
-      <h1>DADOS NO <br><span class="gradient-text">PRÓXIMO NÍVEL.</span></h1>
+      <h1>AUTOMAÇÃO E <br><span style="color:var(--primary)">INTELIGÊNCIA</span> DE DADOS.</h1>
       <p>
-        Matemático especializado em <strong>Estratégia de Dados e Automação</strong>. 
-        Desenvolvo pipelines inteligentes para transformar processos manuais em inteligência de mercado.
+        Matemático e Especialista em <strong>RPA & Automação</strong>. 
+        Transformo grandes volumes de dados em fluxos de trabalho autônomos e eficientes.
       </p>
 
-      <div class="tech-stack">
-        <div class="tech-pill">PYTHON</div>
-        <div class="tech-pill">PANDAS</div>
-        <div class="tech-pill">SQL</div>
-        <div class="tech-pill">EXCEL_PRO</div>
+      <div class="tech-badges">
+        <div class="badge b-python"><i class="fab fa-python"></i> PYTHON</div>
+        <div class="badge b-pandas"><i class="fas fa-table"></i> PANDAS</div>
+        <div class="badge b-sql"><i class="fas fa-database"></i> SQL_SERVER</div>
+        <div class="badge b-rpa"><i class="fas fa-robot"></i> RPA_BOT</div>
+        <div class="badge b-excel"><i class="far fa-file-excel"></i> EXCEL_VBA</div>
       </div>
 
-      <a href="mailto:data.apice@gmail.com" class="cta-btn">INICIAR CONEXÃO</a>
+      <a href="mailto:data.apice@gmail.com" class="cta-btn">Solicitar Automação</a>
     </section>
 
-    <section class="section">
-      <h2 style="font-family: 'Space Grotesk'; margin-bottom: 30px;">PROJETOS EM DESTAQUE</h2>
-      <div class="grid">
-        <div class="card">
-          <h3>Funil iFood</h3>
-          <p>Análise estatística aplicada à otimização de conversão e comportamento de usuários.</p>
-        </div>
-        <div class="card">
-          <h3>Observatório MG</h3>
-          <p>Engenharia de extração e estruturação de dados públicos via Web Scraping.</p>
-        </div>
+    <div class="grid">
+      <div class="card">
+        <h3>Funil iFood</h3>
+        <p>Análise estatística para otimização de conversão e predição de comportamento.</p>
       </div>
-    </section>
+      <div class="card">
+        <h3>Observatório MG</h3>
+        <p>Bot de extração e estruturação de dados de editais públicos em tempo real.</p>
+      </div>
+      <div class="card">
+        <h3>PDF RPA Parser</h3>
+        <p>Automação de leitura e extração de dados estruturados de documentos complexos.</p>
+      </div>
+    </div>
   </main>
 
   <footer>
-    THIAGO DUMONT // 2026 // DATA.APICE@GMAIL.COM
+    THIAGO DUMONT // © 2026 // DATA.APICE@GMAIL.COM
   </footer>
 
 </body>
 </html>
+
