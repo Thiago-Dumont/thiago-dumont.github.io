@@ -3,24 +3,20 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>THIAGO DUMONT | DATA STRATEGIST</title>
+  <title>Thiago Dumont | Estrategista de Dados</title>
 
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Rajdhani:wght@600;700;800&display=swap" rel="stylesheet" />
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600&family=Playfair+Display:ital,wght@0,700;0,900;1,400&display=swap" rel="stylesheet" />
 
   <style>
     :root {
-      --bg: #05070a;
-      --panel: #0d1117;
-      --primary: #00d2ff;
-      --accent: #00ff88; /* Verde neon para sucesso/status */
-      --text-main: #e6edf3;
-      --text-dim: #8b949e;
-      --border: #30363d;
-      --font-display: 'Rajdhani', sans-serif;
-      --font-body: 'Inter', sans-serif;
+      --bg: #fcfcfc; /* Branco Papel */
+      --text-main: #0a101e; /* Azul Noite Profundo */
+      --text-muted: #545b6a;
+      --accent: #1a3a6d; /* Azul Clássico Acadêmico */
+      --border: #e2e8f0;
+      --max-width: 1100px;
     }
 
     * { box-sizing: border-box; margin: 0; padding: 0; }
@@ -29,289 +25,256 @@
     body {
       background-color: var(--bg);
       color: var(--text-main);
-      font-family: var(--font-body);
-      line-height: 1.7; /* Aumentado para melhor leitura */
-      overflow-x: hidden;
+      font-family: 'Inter', sans-serif;
+      line-height: 1.8;
+      -webkit-font-smoothing: antialiased;
     }
 
     .container {
-      width: min(100% - 60px, 1200px);
+      width: min(100% - 80px, var(--max-width));
       margin: 0 auto;
     }
 
-    /* --- NAVIGATION (UX IMPROVED) --- */
-    .nav-header {
-      position: sticky;
-      top: 0;
-      background: rgba(5, 7, 10, 0.95);
-      backdrop-filter: blur(10px);
+    /* --- NAVEGAÇÃO ESTRUTURADA --- */
+    nav {
+      padding: 40px 0;
       border-bottom: 1px solid var(--border);
-      z-index: 1000;
-      padding: 20px 0;
+      background: var(--bg);
     }
 
     .nav-inner {
       display: flex;
       justify-content: space-between;
-      align-items: center;
+      align-items: baseline;
     }
 
-    .logo {
-      font-family: var(--font-display);
-      font-size: 1.5rem;
-      font-weight: 800;
-      letter-spacing: 2px;
-      color: var(--primary);
-      text-transform: uppercase;
+    .nav-logo {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.8rem;
+      font-weight: 900;
+      letter-spacing: -0.5px;
+      color: var(--text-main);
     }
 
     .nav-links { display: flex; gap: 40px; }
     .nav-links a {
-      font-family: var(--font-display);
-      text-transform: uppercase;
-      font-weight: 600;
-      color: var(--text-dim);
       text-decoration: none;
-      letter-spacing: 1px;
-      font-size: 1.1rem;
+      color: var(--text-muted);
+      font-size: 0.95rem;
+      font-weight: 400;
+      text-transform: uppercase;
+      letter-spacing: 1.5px;
       transition: 0.3s;
     }
+    .nav-links a:hover { color: var(--accent); }
 
-    .nav-links a:hover { color: var(--primary); }
-
-    /* --- HERO SECTION (IMPACT) --- */
+    /* --- HERO (EDITORIAL IMPACT) --- */
     .hero {
-      padding: 100px 0;
-      display: grid;
-      grid-template-columns: 1.4fr 0.6fr;
-      gap: 60px;
-      align-items: center;
+      padding: 120px 0;
+      max-width: 900px;
     }
 
-    .hero-text h1 {
-      font-family: var(--font-display);
-      font-size: clamp(3.5rem, 8vw, 5.5rem); /* Fonte maciça */
-      line-height: 0.9;
+    .hero span {
+      display: block;
+      font-size: 0.9rem;
       text-transform: uppercase;
-      margin-bottom: 25px;
-      background: linear-gradient(to bottom, #fff 40%, var(--primary));
-      -webkit-background-clip: text;
-      -webkit-text-fill-color: transparent;
+      letter-spacing: 3px;
+      color: var(--accent);
+      margin-bottom: 20px;
+      font-weight: 600;
     }
 
-    .hero-text p {
-      font-size: 1.3rem; /* Fonte maior para PC */
-      color: var(--text-dim);
-      max-width: 700px;
+    .hero h1 {
+      font-family: 'Playfair Display', serif;
+      font-size: clamp(3.5rem, 8vw, 5.5rem);
+      line-height: 1.1;
       margin-bottom: 40px;
+      font-weight: 900;
     }
 
-    /* --- PROFILE CARD (CLEAN & PRO) --- */
-    .profile-box {
-      background: var(--panel);
-      border: 1px solid var(--border);
-      padding: 40px;
-      border-radius: 4px;
-      text-align: center;
-      position: relative;
+    .hero p {
+      font-size: 1.4rem;
+      color: var(--text-muted);
+      max-width: 750px;
+      font-weight: 300;
     }
 
-    .profile-box::before {
-      content: '';
-      position: absolute;
-      top: -1px; left: -1px; width: 40px; height: 40px;
-      border-top: 3px solid var(--primary);
-      border-left: 3px solid var(--primary);
-    }
-
-    .img-frame {
-      width: 200px;
-      height: 200px;
-      margin: 0 auto 25px;
-      border: 2px solid var(--primary);
-      padding: 10px;
-      filter: grayscale(100%) contrast(110%);
-      transition: 0.5s;
-    }
-    .img-frame:hover { filter: grayscale(0%); }
-    .img-frame img { width: 100%; height: 100%; object-fit: cover; }
-
-    .btn-main {
+    /* --- SECTION TITLES --- */
+    .section-title {
+      font-family: 'Playfair Display', serif;
+      font-size: 2.8rem;
+      margin-bottom: 60px;
+      padding-bottom: 20px;
+      border-bottom: 2px solid var(--text-main);
       display: inline-block;
-      padding: 18px 40px;
-      background: var(--primary);
-      color: var(--bg);
-      font-family: var(--font-display);
-      font-weight: 800;
-      font-size: 1.2rem;
-      text-transform: uppercase;
-      text-decoration: none;
+    }
+
+    /* --- PROJECT LIST (CLEAN & HORIZONTAL) --- */
+    .project-item {
+      display: grid;
+      grid-template-columns: 300px 1fr;
+      gap: 60px;
+      padding: 60px 0;
+      border-bottom: 1px solid var(--border);
       transition: 0.3s;
     }
-    .btn-main:hover {
-      background: var(--accent);
-      transform: scale(1.05);
-    }
+    .project-item:hover { background: #f8fafc; }
 
-    /* --- PROJECTS GRID --- */
-    .section-label {
-      font-family: var(--font-display);
+    .project-meta {
+      font-family: 'Playfair Display', serif;
+      font-style: italic;
+      font-size: 1.4rem;
       color: var(--accent);
-      font-size: 1.2rem;
-      font-weight: 700;
-      letter-spacing: 3px;
-      margin-bottom: 10px;
-      display: block;
     }
 
-    .grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
-      gap: 30px;
-      margin-top: 40px;
-    }
-
-    .card {
-      background: var(--panel);
-      border: 1px solid var(--border);
-      padding: 40px;
-      transition: 0.3s ease;
-      display: flex;
-      flex-direction: column;
-      justify-content: space-between;
-    }
-
-    .card:hover {
-      border-color: var(--primary);
-      background: #11161d;
-    }
-
-    .card h3 {
-      font-family: var(--font-display);
+    .project-content h3 {
       font-size: 1.8rem;
-      text-transform: uppercase;
       margin-bottom: 15px;
-      color: var(--primary);
+      font-weight: 600;
     }
 
-    .card p {
-      font-size: 1.1rem;
-      color: var(--text-dim);
+    .project-content p {
+      font-size: 1.15rem;
+      color: var(--text-muted);
       margin-bottom: 25px;
     }
 
-    .tag-list { display: flex; gap: 10px; flex-wrap: wrap; }
+    .tag-container { display: flex; gap: 12px; }
     .tag {
       font-size: 0.8rem;
+      background: #eff6ff;
+      color: var(--accent);
+      padding: 4px 14px;
+      border-radius: 2px;
       font-weight: 600;
-      color: var(--text-dim);
-      border: 1px solid var(--border);
-      padding: 4px 12px;
-      text-transform: uppercase;
     }
+
+    /* --- CONTACT (THE CALL) --- */
+    .contact-section {
+      padding: 150px 0;
+      text-align: center;
+    }
+
+    .contact-box {
+      border: 1px solid var(--border);
+      padding: 80px 40px;
+      background: #fff;
+    }
+
+    .contact-box h2 {
+      font-family: 'Playfair Display', serif;
+      font-size: 3.5rem;
+      margin-bottom: 20px;
+    }
+
+    .btn-classic {
+      display: inline-block;
+      margin-top: 30px;
+      padding: 18px 50px;
+      background: var(--text-main);
+      color: #fff;
+      text-decoration: none;
+      font-weight: 600;
+      letter-spacing: 1px;
+      transition: 0.4s;
+    }
+    .btn-classic:hover { background: var(--accent); transform: translateY(-3px); }
 
     /* --- FOOTER --- */
     footer {
-      padding: 100px 0 50px;
+      padding: 60px 0;
       border-top: 1px solid var(--border);
       text-align: center;
-      margin-top: 100px;
+      font-size: 0.9rem;
+      color: var(--text-muted);
+      text-transform: uppercase;
+      letter-spacing: 2px;
     }
 
-    /* RESPONSIVIDADE */
+    /* RESPONSIVIDADE PC-FOCUS */
     @media (max-width: 900px) {
-      .hero { grid-template-columns: 1fr; text-align: center; padding: 60px 0; }
-      .hero-text p { margin-inline: auto; }
+      .project-item { grid-template-columns: 1fr; gap: 20px; }
+      .hero h1 { font-size: 3.5rem; }
       .nav-links { display: none; }
     }
   </style>
 </head>
 <body>
 
-  <header class="nav-header">
+  <nav>
     <div class="container nav-inner">
-      <div class="logo">T.DUMONT_DATA</div>
-      <nav class="nav-links">
-        <a href="#sobre">Sobre</a>
-        <a href="#projetos">Projetos</a>
+      <div class="nav-logo">T. Dumont</div>
+      <div class="nav-links">
+        <a href="#sobre">Resumo</a>
+        <a href="#projetos">Trabalhos</a>
         <a href="#contato">Contato</a>
-      </nav>
+      </div>
     </div>
-  </header>
+  </nav>
 
   <main class="container">
     
     <section class="hero" id="sobre">
-      <div class="hero-text">
-        <span class="section-label">SYSTEM_INIT // MATEMÁTICO</span>
-        <h1>PIPELINES<br>QUE GERAM<br>VALOR.</h1>
-        <p>
-          Transformo dados brutos em ativos estratégicos através de arquiteturas de ETL escaláveis e automação de alto nível. Focado em resultados técnicos que impactam diretamente a tomada de decisão.
+      <span>Matemático & Estrategista de Dados</span>
+      <h1>Transformando dados brutos em decisões fundamentadas.</h1>
+      <p>
+        Especialista em arquitetura de dados e automação. Minha abordagem une o rigor matemático à engenharia moderna para construir sistemas de informação que escalam com o seu negócio.
+      </p>
+    </section>
+
+    <section id="projetos" style="padding-top: 60px;">
+      <h2 class="section-title">Projetos Selecionados</h2>
+
+      <div class="project-item">
+        <div class="project-meta">Case 01_Análise</div>
+        <div class="project-content">
+          <h3>Funil de Conversão iFood</h3>
+          <p>Implementação de modelos estatísticos para decodificar o comportamento transacional e otimizar a jornada de compra dentro da plataforma.</p>
+          <div class="tag-container">
+            <span class="tag">Python</span><span class="tag">Pandas</span><span class="tag">Estatística</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="project-item">
+        <div class="project-meta">Case 02_Engenharia</div>
+        <div class="project-content">
+          <h3>Observatório de Dados MG</h3>
+          <p>Pipeline automatizado de coleta e estruturação de dados públicos. Transformação de informações desestruturadas em um repositório estratégico.</p>
+          <div class="tag-container">
+            <span class="tag">ETL</span><span class="tag">Web Scraping</span><span class="tag">SQL</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="project-item">
+        <div class="project-meta">Case 03_Automação</div>
+        <div class="project-content">
+          <h3>Sistemas de Parsing Estrutural</h3>
+          <p>Desenvolvimento de motores de extração de dados para documentos PDF complexos, integrando fluxos de trabalho manuais ao ecossistema digital.</p>
+          <div class="tag-container">
+            <span class="tag">Python</span><span class="tag">Regex</span><span class="tag">Engenharia</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="contato" class="contact-section">
+      <div class="contact-box">
+        <h2>Vamos conversar?</h2>
+        <p style="font-size: 1.2rem; color: var(--text-muted);">
+          Atuando na interseção entre análise de dados e eficiência operacional.<br>
+          <strong>data.apice@gmail.com</strong>
         </p>
-        <a href="https://github.com/Thiago-Dumont" target="_blank" class="btn-main">Acessar Core_GitHub</a>
-      </div>
-
-      <div class="profile-box">
-        <div class="img-frame">
-          <img src="Imagem3030.png" alt="Thiago Dumont">
-        </div>
-        <h2 style="font-family: var(--font-display); letter-spacing: 1px;">THIAGO DUMONT</h2>
-        <p style="color: var(--accent); font-weight: 700; font-size: 0.9rem; text-transform: uppercase; margin-top: 5px;">Data & Automation Specialist</p>
-      </div>
-    </section>
-
-    <section id="projetos">
-      <span class="section-label">01_SELECTED_PROJECTS</span>
-      <h2 style="font-family: var(--font-display); font-size: 3rem; text-transform: uppercase;">Log de Implementação</h2>
-
-      <div class="grid">
-        <div class="card">
-          <div>
-            <h3>Funil de Conversão iFood</h3>
-            <p>Análise estatística para identificação de churn e otimização de fluxos transacionais em larga escala.</p>
-          </div>
-          <div class="tag-list">
-            <span class="tag">Python</span><span class="tag">Pandas</span><span class="tag">DataViz</span>
-          </div>
-        </div>
-
-        <div class="card">
-          <div>
-            <h3>Observatório Vagas MG</h3>
-            <p>Engenharia de dados aplicada na coleta e estruturação de editais públicos via Web Scraping automatizado.</p>
-          </div>
-          <div class="tag-list">
-            <span class="tag">Scraping</span><span class="tag">ETL</span><span class="tag">SQL</span>
-          </div>
-        </div>
-
-        <div class="card">
-          <div>
-            <h3>PDF Structural Parser</h3>
-            <p>Desenvolvimento de motores de Regex para extração de tabelas complexas e integração com bancos relacionais.</p>
-          </div>
-          <div class="tag-list">
-            <span class="tag">Automation</span><span class="tag">Python</span><span class="tag">Regex</span>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <section id="contato" style="margin-top: 150px; text-align: center;">
-      <div class="card" style="max-width: 800px; margin: 0 auto; padding: 80px 40px;">
-        <span class="section-label">02_CONNECTION</span>
-        <h2 style="font-family: var(--font-display); font-size: 3rem; text-transform: uppercase; margin-bottom: 20px;">Iniciar Projeto?</h2>
-        <p style="font-size: 1.2rem; margin-bottom: 40px;">Disponível para consultorias em automação de dados e arquitetura de BI.</p>
-        <a href="mailto:seuemail@exemplo.com" class="btn-main" style="background: transparent; border: 2px solid var(--primary); color: var(--primary);">Abrir Canal_Email</a>
+        <a href="mailto:data.apice@gmail.com" class="btn-classic">Iniciar Correspondência</a>
       </div>
     </section>
 
   </main>
 
   <footer>
-    <p style="font-family: var(--font-display); letter-spacing: 2px;">THIAGO DUMONT © 2026 // DADOS & ESTRATÉGIA</p>
+    <p>Thiago Dumont // Belo Horizonte, MG // 2026</p>
   </footer>
 
 </body>
 </html>
-
