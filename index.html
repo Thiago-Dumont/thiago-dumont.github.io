@@ -11,10 +11,10 @@
 
   <style>
     :root {
-      --bg: #fcfcfc; /* Branco Papel */
-      --text-main: #0a101e; /* Azul Noite Profundo */
+      --bg: #fcfcfc;
+      --text-main: #0a101e;
       --text-muted: #545b6a;
-      --accent: #1a3a6d; /* Azul Clássico Acadêmico */
+      --accent: #1a3a6d;
       --border: #e2e8f0;
       --max-width: 1100px;
     }
@@ -35,11 +35,10 @@
       margin: 0 auto;
     }
 
-    /* --- NAVEGAÇÃO ESTRUTURADA --- */
+    /* --- NAVEGAÇÃO --- */
     nav {
       padding: 40px 0;
       border-bottom: 1px solid var(--border);
-      background: var(--bg);
     }
 
     .nav-inner {
@@ -52,7 +51,6 @@
       font-family: 'Playfair Display', serif;
       font-size: 1.8rem;
       font-weight: 900;
-      letter-spacing: -0.5px;
       color: var(--text-main);
     }
 
@@ -60,18 +58,15 @@
     .nav-links a {
       text-decoration: none;
       color: var(--text-muted);
-      font-size: 0.95rem;
-      font-weight: 400;
+      font-size: 0.9rem;
       text-transform: uppercase;
       letter-spacing: 1.5px;
-      transition: 0.3s;
     }
-    .nav-links a:hover { color: var(--accent); }
 
-    /* --- HERO (EDITORIAL IMPACT) --- */
+    /* --- HERO --- */
     .hero {
-      padding: 120px 0;
-      max-width: 900px;
+      padding: 100px 0 60px;
+      max-width: 950px;
     }
 
     .hero span {
@@ -86,115 +81,94 @@
 
     .hero h1 {
       font-family: 'Playfair Display', serif;
-      font-size: clamp(3.5rem, 8vw, 5.5rem);
+      font-size: clamp(3rem, 7vw, 5rem);
       line-height: 1.1;
-      margin-bottom: 40px;
+      margin-bottom: 30px;
       font-weight: 900;
     }
 
-    .hero p {
-      font-size: 1.4rem;
-      color: var(--text-muted);
-      max-width: 750px;
-      font-weight: 300;
+    /* --- TECNOLOGIAS (ESTILO MARCADOR CLÁSSICO) --- */
+    .tech-grid {
+      display: flex;
+      gap: 12px;
+      flex-wrap: wrap;
+      margin-bottom: 40px;
     }
 
-    /* --- SECTION TITLES --- */
+    .tech-badge {
+      font-size: 0.75rem;
+      font-weight: 700;
+      letter-spacing: 1.2px;
+      text-transform: uppercase;
+      padding: 8px 18px;
+      border: 1px solid var(--text-main);
+      color: var(--text-main);
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      transition: 0.3s;
+    }
+
+    .tech-badge:hover {
+      background: var(--text-main);
+      color: #fff;
+    }
+
+    /* Cores sutis para remeter à imagem enviada, mas mantendo a classe */
+    .tech-python { border-left: 5px solid #3776ab; }
+    .tech-pandas { border-left: 5px solid #150458; }
+    .tech-sql { border-left: 5px solid #00758f; }
+    .tech-excel { border-left: 5px solid #1d6f42; }
+    .tech-web { border-left: 5px solid #e34f26; }
+
+    /* --- PROJETOS --- */
     .section-title {
       font-family: 'Playfair Display', serif;
-      font-size: 2.8rem;
-      margin-bottom: 60px;
-      padding-bottom: 20px;
+      font-size: 2.5rem;
+      margin: 80px 0 40px;
+      padding-bottom: 15px;
       border-bottom: 2px solid var(--text-main);
       display: inline-block;
     }
 
-    /* --- PROJECT LIST (CLEAN & HORIZONTAL) --- */
     .project-item {
       display: grid;
-      grid-template-columns: 300px 1fr;
+      grid-template-columns: 280px 1fr;
       gap: 60px;
-      padding: 60px 0;
+      padding: 50px 0;
       border-bottom: 1px solid var(--border);
-      transition: 0.3s;
     }
-    .project-item:hover { background: #f8fafc; }
 
     .project-meta {
       font-family: 'Playfair Display', serif;
       font-style: italic;
-      font-size: 1.4rem;
+      font-size: 1.3rem;
       color: var(--accent);
     }
 
-    .project-content h3 {
-      font-size: 1.8rem;
-      margin-bottom: 15px;
-      font-weight: 600;
-    }
+    .project-content h3 { font-size: 1.7rem; margin-bottom: 12px; }
+    .project-content p { color: var(--text-muted); font-size: 1.1rem; }
 
-    .project-content p {
-      font-size: 1.15rem;
-      color: var(--text-muted);
-      margin-bottom: 25px;
-    }
-
-    .tag-container { display: flex; gap: 12px; }
-    .tag {
-      font-size: 0.8rem;
-      background: #eff6ff;
-      color: var(--accent);
-      padding: 4px 14px;
-      border-radius: 2px;
-      font-weight: 600;
-    }
-
-    /* --- CONTACT (THE CALL) --- */
-    .contact-section {
-      padding: 150px 0;
-      text-align: center;
-    }
-
-    .contact-box {
-      border: 1px solid var(--border);
-      padding: 80px 40px;
-      background: #fff;
-    }
-
-    .contact-box h2 {
-      font-family: 'Playfair Display', serif;
-      font-size: 3.5rem;
-      margin-bottom: 20px;
-    }
+    /* --- CONTATO --- */
+    .contact-section { padding: 120px 0; text-align: center; }
+    .contact-box { border: 1px solid var(--border); padding: 70px 30px; }
+    .contact-box h2 { font-family: 'Playfair Display', serif; font-size: 3rem; margin-bottom: 20px; }
 
     .btn-classic {
       display: inline-block;
       margin-top: 30px;
-      padding: 18px 50px;
+      padding: 16px 45px;
       background: var(--text-main);
       color: #fff;
       text-decoration: none;
       font-weight: 600;
-      letter-spacing: 1px;
-      transition: 0.4s;
-    }
-    .btn-classic:hover { background: var(--accent); transform: translateY(-3px); }
-
-    /* --- FOOTER --- */
-    footer {
-      padding: 60px 0;
-      border-top: 1px solid var(--border);
-      text-align: center;
-      font-size: 0.9rem;
-      color: var(--text-muted);
-      text-transform: uppercase;
-      letter-spacing: 2px;
+      transition: 0.3s;
     }
 
-    /* RESPONSIVIDADE PC-FOCUS */
+    footer { padding: 40px 0; border-top: 1px solid var(--border); text-align: center; font-size: 0.8rem; letter-spacing: 2px; color: var(--text-muted); }
+
     @media (max-width: 900px) {
       .project-item { grid-template-columns: 1fr; gap: 20px; }
-      .hero h1 { font-size: 3.5rem; }
       .nav-links { display: none; }
     }
   </style>
@@ -216,23 +190,30 @@
     
     <section class="hero" id="sobre">
       <span>Matemático & Estrategista de Dados</span>
-      <h1>Transformando dados brutos em decisões fundamentadas.</h1>
-      <p>
-        Especialista em arquitetura de dados e automação. Minha abordagem une o rigor matemático à engenharia moderna para construir sistemas de informação que escalam com o seu negócio.
+      <h1>Decisões fundamentadas através da ciência de dados.</h1>
+      
+      <div class="tech-grid">
+        <div class="tech-badge tech-python">Python</div>
+        <div class="tech-badge tech-pandas">Pandas</div>
+        <div class="tech-badge tech-sql">SQL</div>
+        <div class="tech-badge tech-excel">Excel</div>
+        <div class="tech-badge tech-web">HTML/CSS</div>
+        <div class="tech-badge">JavaScript</div>
+      </div>
+
+      <p style="font-size: 1.3rem; color: var(--text-muted); font-weight: 300;">
+        Especialista em arquitetura de dados e automação. Minha abordagem une o rigor matemático à engenharia moderna para construir sistemas de informação escaláveis.
       </p>
     </section>
 
-    <section id="projetos" style="padding-top: 60px;">
-      <h2 class="section-title">Projetos Selecionados</h2>
+    <section id="projetos">
+      <h2 class="section-title">Trabalhos Selecionados</h2>
 
       <div class="project-item">
         <div class="project-meta">Case 01_Análise</div>
         <div class="project-content">
           <h3>Funil de Conversão iFood</h3>
-          <p>Implementação de modelos estatísticos para decodificar o comportamento transacional e otimizar a jornada de compra dentro da plataforma.</p>
-          <div class="tag-container">
-            <span class="tag">Python</span><span class="tag">Pandas</span><span class="tag">Estatística</span>
-          </div>
+          <p>Modelagem estatística para análise de churn e otimização de performance transacional em larga escala.</p>
         </div>
       </div>
 
@@ -240,21 +221,7 @@
         <div class="project-meta">Case 02_Engenharia</div>
         <div class="project-content">
           <h3>Observatório de Dados MG</h3>
-          <p>Pipeline automatizado de coleta e estruturação de dados públicos. Transformação de informações desestruturadas em um repositório estratégico.</p>
-          <div class="tag-container">
-            <span class="tag">ETL</span><span class="tag">Web Scraping</span><span class="tag">SQL</span>
-          </div>
-        </div>
-      </div>
-
-      <div class="project-item">
-        <div class="project-meta">Case 03_Automação</div>
-        <div class="project-content">
-          <h3>Sistemas de Parsing Estrutural</h3>
-          <p>Desenvolvimento de motores de extração de dados para documentos PDF complexos, integrando fluxos de trabalho manuais ao ecossistema digital.</p>
-          <div class="tag-container">
-            <span class="tag">Python</span><span class="tag">Regex</span><span class="tag">Engenharia</span>
-          </div>
+          <p>Pipeline completo de Web Scraping e SQL para monitoramento e estruturação de dados de editais públicos.</p>
         </div>
       </div>
     </section>
@@ -273,7 +240,7 @@
   </main>
 
   <footer>
-    <p>Thiago Dumont // Belo Horizonte, MG // 2026</p>
+    <p>Thiago Dumont // MG // 2026</p>
   </footer>
 
 </body>
