@@ -13,13 +13,13 @@
     :root {
       --bg: #030508;
       --card: rgba(15, 23, 42, 0.6);
-      --primary: #38bdf8; /* Sky Blue */
-      --accent: #818cf8; /* Indigo */
+      --primary: #38bdf8;
+      --accent: #818cf8;
       --text: #f8fafc;
       --border: rgba(255, 255, 255, 0.1);
     }
 
-    * { box-sizing: border-box; margin: 0; padding: 0; cursor: default; }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
     html { scroll-behavior: smooth; }
 
     body {
@@ -27,247 +27,185 @@
       color: var(--text);
       font-family: 'Plus Jakarta Sans', sans-serif;
       overflow-x: hidden;
-      line-height: 1.6;
+      line-height: 1.5;
     }
 
-    /* --- Símbolo Ápice Animado --- */
-    .apice-bg {
-      position: fixed;
-      top: 50%;
-      left: 50%;
-      transform: translate(-50%, -50%);
-      width: 600px;
-      height: 600px;
-      background: radial-gradient(circle, rgba(56, 189, 248, 0.08) 0%, transparent 70%);
-      z-index: -1;
-      pointer-events: none;
-    }
-
+    /* --- Símbolo Delta de Fundo --- */
     .apice-logo-fixed {
-      position: absolute;
-      top: -100px;
-      right: -50px;
-      font-size: 40rem;
+      position: fixed;
+      top: 10%;
+      right: -10%;
+      font-size: clamp(20rem, 50vw, 40rem);
       font-weight: 800;
       color: rgba(255, 255, 255, 0.02);
-      user-select: none;
       z-index: -1;
+      user-select: none;
     }
 
-    /* --- Navegação --- */
+    /* --- Navegação Corrigida --- */
     nav {
-      padding: 30px 0;
+      padding: 20px 0;
       position: sticky;
       top: 0;
       z-index: 100;
+      background: rgba(3, 5, 8, 0.8);
       backdrop-filter: blur(10px);
     }
 
     .nav-inner {
-      width: min(100% - 60px, 1200px);
+      width: min(100% - 40px, 1200px);
       margin: 0 auto;
       display: flex;
       justify-content: space-between;
       align-items: center;
     }
 
-    .logo-text {
-      font-family: 'Space Grotesk', sans-serif;
-      font-weight: 700;
-      font-size: 1.5rem;
-      letter-spacing: -1px;
-    }
+    .logo-text { font-family: 'Space Grotesk', sans-serif; font-weight: 700; font-size: 1.2rem; }
+    .logo-symbol { color: var(--primary); }
 
-    .logo-symbol { color: var(--primary); margin-right: 5px; }
-
-    /* --- Hero Section --- */
+    /* --- Hero (Fix de Sobreposição) --- */
     .hero {
-      height: 85vh;
+      padding: 60px 0;
+      min-height: 80vh;
       display: flex;
       flex-direction: column;
       justify-content: center;
-      width: min(100% - 60px, 1200px);
+      width: min(100% - 40px, 1200px);
       margin: 0 auto;
     }
 
     .hero h1 {
       font-family: 'Space Grotesk', sans-serif;
-      font-size: clamp(3rem, 10vw, 6rem);
-      line-height: 0.9;
-      margin-bottom: 25px;
-      font-weight: 700;
+      font-size: clamp(2.5rem, 8vw, 5.5rem);
+      line-height: 1;
+      margin-bottom: 20px;
     }
 
     .gradient-text {
-      background: linear-gradient(to right, #fff, var(--primary), var(--accent));
+      background: linear-gradient(to right, #fff, var(--primary));
       -webkit-background-clip: text;
       -webkit-text-fill-color: transparent;
     }
 
-    /* --- Marcadores Tecnológicos (v2026) --- */
+    .hero p {
+      font-size: clamp(1.1rem, 4vw, 1.4rem);
+      color: #94a3b8;
+      max-width: 600px;
+      margin-bottom: 30px;
+    }
+
+    /* --- Tech Stack --- */
     .tech-stack {
       display: flex;
-      gap: 15px;
+      gap: 10px;
       flex-wrap: wrap;
-      margin-top: 40px;
+      margin-bottom: 40px;
     }
 
     .tech-pill {
-      padding: 10px 22px;
+      padding: 8px 16px;
       background: var(--card);
       border: 1px solid var(--border);
       border-radius: 50px;
-      font-size: 0.85rem;
-      font-weight: 600;
-      letter-spacing: 1px;
-      transition: 0.4s cubic-bezier(0.23, 1, 0.32, 1);
+      font-size: 0.75rem;
+      font-weight: 700;
       display: flex;
       align-items: center;
-      gap: 8px;
+      gap: 6px;
     }
 
-    .tech-pill:hover {
-      border-color: var(--primary);
-      transform: translateY(-5px);
-      box-shadow: 0 10px 20px rgba(56, 189, 248, 0.15);
-      background: rgba(56, 189, 248, 0.05);
-      cursor: pointer;
+    /* --- Botão Call to Action --- */
+    .cta-btn {
+      padding: 16px 32px;
+      background: var(--text);
+      color: var(--bg);
+      border-radius: 8px;
+      font-weight: 700;
+      text-decoration: none;
+      display: inline-block;
+      width: fit-content;
+      transition: 0.3s;
     }
 
-    .dot { width: 8px; height: 8px; border-radius: 50%; }
+    /* --- Seção de Projetos --- */
+    .section {
+      padding: 80px 0;
+      width: min(100% - 40px, 1200px);
+      margin: 0 auto;
+    }
 
-    /* --- Grid de Experiência --- */
-    .section { padding: 100px 0; }
-    
     .grid {
       display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
-      gap: 25px;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 20px;
     }
 
     .card {
       background: var(--card);
       border: 1px solid var(--border);
-      padding: 40px;
-      border-radius: 24px;
-      transition: 0.4s;
-      position: relative;
-      overflow: hidden;
+      padding: 30px;
+      border-radius: 16px;
     }
 
-    .card:hover {
-      background: rgba(15, 23, 42, 0.9);
-      border-color: rgba(56, 189, 248, 0.4);
-    }
+    .card h3 { font-family: 'Space Grotesk', sans-serif; margin-bottom: 10px; color: var(--primary); }
 
-    .card h3 { font-family: 'Space Grotesk', sans-serif; font-size: 1.8rem; margin-bottom: 15px; }
-    .card p { color: #94a3b8; font-size: 1.1rem; }
+    footer { padding: 60px 0; text-align: center; color: #475569; font-size: 0.8rem; }
 
-    /* --- Botão Magnético --- */
-    .cta-btn {
-      margin-top: 50px;
-      padding: 20px 45px;
-      background: var(--text);
-      color: var(--bg);
-      border-radius: 12px;
-      font-weight: 700;
-      font-family: 'Space Grotesk', sans-serif;
-      text-decoration: none;
-      display: inline-block;
-      transition: 0.3s;
-      font-size: 1.2rem;
-    }
-
-    .cta-btn:hover {
-      background: var(--primary);
-      transform: scale(1.05);
-      cursor: pointer;
-    }
-
-    footer {
-      padding: 80px 0;
-      text-align: center;
-      border-top: 1px solid var(--border);
-      color: #475569;
-      font-weight: 600;
-      letter-spacing: 2px;
-    }
-
-    /* Animação suave de entrada */
-    @keyframes fadeInUp {
-      from { opacity: 0; transform: translateY(30px); }
-      to { opacity: 1; transform: translateY(0); }
-    }
-
-    .reveal { animation: fadeInUp 1s forwards; }
-
-    @media (max-width: 800px) {
-      .hero h1 { font-size: 3.5rem; }
+    /* --- Media Query Específica para Mobile --- */
+    @media (max-width: 600px) {
+      .hero { padding-top: 40px; text-align: left; }
+      .apice-logo-fixed { top: 20%; right: -20%; }
+      .nav-inner span { display: none; } /* Esconde nome longo no mobile */
     }
   </style>
 </head>
 <body>
 
-  <div class="apice-bg"></div>
   <div class="apice-logo-fixed">Δ</div>
 
   <nav>
     <div class="nav-inner">
       <div class="logo-text"><span class="logo-symbol">Δ</span> DATA ÁPICE</div>
-      <div style="font-weight: 600; color: var(--primary); font-size: 0.9rem;">THIAGO DUMONT</div>
+      <span style="font-weight: 600; color: var(--primary); font-size: 0.8rem;">THIAGO DUMONT</span>
     </div>
   </nav>
 
-  <main class="container">
-    
-    <section class="hero reveal">
-      <h1>CONSTRUINDO O <br><span class="gradient-text">PRÓXIMO NÍVEL</span> <br>DOS SEUS DADOS.</h1>
-      <p style="font-size: 1.5rem; color: #94a3b8; max-width: 800px; margin-top: 20px;">
-        Matemático e Arquiteto de Dados focado em transformar complexidade em pipelines de alta performance.
+  <main>
+    <section class="hero">
+      <h1>DADOS NO <br><span class="gradient-text">PRÓXIMO NÍVEL.</span></h1>
+      <p>
+        Matemático especializado em <strong>Estratégia de Dados e Automação</strong>. 
+        Desenvolvo pipelines inteligentes para transformar processos manuais em inteligência de mercado.
       </p>
 
       <div class="tech-stack">
-        <div class="tech-pill"><div class="dot" style="background: #3776ab;"></div> PYTHON</div>
-        <div class="tech-pill"><div class="dot" style="background: #150458;"></div> PANDAS</div>
-        <div class="tech-pill"><div class="dot" style="background: #00758f;"></div> SQL_ENGINE</div>
-        <div class="tech-pill"><div class="dot" style="background: #1d6f42;"></div> EXCEL_PRO</div>
-        <div class="tech-pill"><div class="dot" style="background: #e34f26;"></div> AUTOMATION</div>
+        <div class="tech-pill">PYTHON</div>
+        <div class="tech-pill">PANDAS</div>
+        <div class="tech-pill">SQL</div>
+        <div class="tech-pill">EXCEL_PRO</div>
       </div>
 
       <a href="mailto:data.apice@gmail.com" class="cta-btn">INICIAR CONEXÃO</a>
     </section>
 
     <section class="section">
-      <h2 style="font-family: 'Space Grotesk'; font-size: 3rem; margin-bottom: 50px;">PROJETOS EM DESTAQUE</h2>
+      <h2 style="font-family: 'Space Grotesk'; margin-bottom: 30px;">PROJETOS EM DESTAQUE</h2>
       <div class="grid">
         <div class="card">
           <h3>Funil iFood</h3>
-          <p>Modelagem estatística para predição de comportamento e otimização de conversão.</p>
+          <p>Análise estatística aplicada à otimização de conversão e comportamento de usuários.</p>
         </div>
         <div class="card">
           <h3>Observatório MG</h3>
-          <p>Pipeline de extração automatizada de dados públicos com arquitetura SQL escalável.</p>
-        </div>
-        <div class="card">
-          <h3>Parsing Inteligente</h3>
-          <p>Motores de extração via Regex para documentos não estruturados em escala industrial.</p>
+          <p>Engenharia de extração e estruturação de dados públicos via Web Scraping.</p>
         </div>
       </div>
     </section>
-
   </main>
 
   <footer>
-    THIAGO DUMONT // DATA.APICE@GMAIL.COM // 2026
+    THIAGO DUMONT // 2026 // DATA.APICE@GMAIL.COM
   </footer>
-
-  <script>
-    // Pequeno efeito magnético para o símbolo de fundo seguir o scroll levemente
-    window.addEventListener('scroll', () => {
-      const scroll = window.pageYOffset;
-      document.querySelector('.apice-logo-fixed').style.transform = `translateY(${scroll * 0.2}px)`;
-    });
-  </script>
 
 </body>
 </html>
