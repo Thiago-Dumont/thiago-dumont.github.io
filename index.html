@@ -3,221 +3,271 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>THIAGO DUMONT | DATA ÁPICE RPA</title>
+  <title>THIAGO DUMONT | DATA ÁPICE</title>
 
   <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;600;800&family=Space+Grotesk:wght@500;700&display=swap" rel="stylesheet" />
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
   
   <style>
     :root {
-      --bg: #010409;
-      --card-bg: rgba(13, 17, 23, 0.8);
-      --primary: #38bdf8;
-      --text: #ffffff;
-      --text-dim: #94a3b8;
-      --border: rgba(56, 189, 248, 0.2);
+      --bg: #030508;
+      --card: rgba(15, 23, 42, 0.6);
+      --primary: #38bdf8; /* Sky Blue */
+      --accent: #818cf8; /* Indigo */
+      --text: #f8fafc;
+      --border: rgba(255, 255, 255, 0.1);
     }
 
-    * { box-sizing: border-box; margin: 0; padding: 0; }
+    * { box-sizing: border-box; margin: 0; padding: 0; cursor: default; }
     html { scroll-behavior: smooth; }
 
     body {
       background-color: var(--bg);
       color: var(--text);
       font-family: 'Plus Jakarta Sans', sans-serif;
-      line-height: 1.6;
       overflow-x: hidden;
+      line-height: 1.6;
     }
 
-    /* Marca d'água Matemática */
-    .math-bg {
+    /* --- Símbolo Ápice Animado --- */
+    .apice-bg {
       position: fixed;
       top: 50%;
-      right: -10%;
-      transform: translateY(-50%);
-      font-size: 40rem;
-      font-weight: 800;
-      color: rgba(56, 189, 248, 0.02);
+      left: 50%;
+      transform: translate(-50%, -50%);
+      width: 600px;
+      height: 600px;
+      background: radial-gradient(circle, rgba(56, 189, 248, 0.08) 0%, transparent 70%);
       z-index: -1;
       pointer-events: none;
     }
 
+    .apice-logo-fixed {
+      position: absolute;
+      top: -100px;
+      right: -50px;
+      font-size: 40rem;
+      font-weight: 800;
+      color: rgba(255, 255, 255, 0.02);
+      user-select: none;
+      z-index: -1;
+    }
+
+    /* --- Navegação --- */
     nav {
-      padding: 20px 0;
+      padding: 30px 0;
       position: sticky;
       top: 0;
       z-index: 100;
-      background: rgba(1, 4, 9, 0.95);
-      backdrop-filter: blur(12px);
-      border-bottom: 1px solid var(--border);
+      backdrop-filter: blur(10px);
     }
 
     .nav-inner {
-      width: min(100% - 40px, 1200px);
+      width: min(100% - 60px, 1200px);
       margin: 0 auto;
       display: flex;
       justify-content: space-between;
       align-items: center;
     }
 
-    .logo { font-family: 'Space Grotesk', sans-serif; font-size: 1.3rem; font-weight: 700; }
-    .logo span { color: var(--primary); }
+    .logo-text {
+      font-family: 'Space Grotesk', sans-serif;
+      font-weight: 700;
+      font-size: 1.5rem;
+      letter-spacing: -1px;
+    }
 
+    .logo-symbol { color: var(--primary); margin-right: 5px; }
+
+    /* --- Hero Section --- */
     .hero {
-      padding: clamp(40px, 10vh, 100px) 0;
-      width: min(100% - 40px, 1200px);
+      height: 85vh;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      width: min(100% - 60px, 1200px);
       margin: 0 auto;
     }
 
     .hero h1 {
       font-family: 'Space Grotesk', sans-serif;
-      font-size: clamp(2.5rem, 8vw, 5rem);
-      line-height: 1;
-      margin-bottom: 20px;
+      font-size: clamp(3rem, 10vw, 6rem);
+      line-height: 0.9;
+      margin-bottom: 25px;
+      font-weight: 700;
     }
 
-    .hero p {
-      font-size: clamp(1.1rem, 3vw, 1.3rem);
-      color: var(--text-dim);
-      max-width: 700px;
-      margin-bottom: 40px;
+    .gradient-text {
+      background: linear-gradient(to right, #fff, var(--primary), var(--accent));
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
     }
 
-    /* --- TECH BADGES --- */
-    .tech-badges {
+    /* --- Marcadores Tecnológicos (Pills Tech) --- */
+    .tech-stack {
       display: flex;
-      gap: 12px;
+      gap: 15px;
       flex-wrap: wrap;
-      margin-bottom: 50px;
+      margin-top: 40px;
     }
 
-    .badge {
+    .tech-pill {
+      padding: 10px 22px;
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: 50px;
+      font-size: 0.85rem;
+      font-weight: 600;
+      letter-spacing: 1px;
+      transition: 0.4s cubic-bezier(0.23, 1, 0.32, 1);
       display: flex;
       align-items: center;
       gap: 8px;
-      padding: 6px 14px;
-      border-radius: 4px;
-      font-size: 0.85rem;
-      font-weight: 700;
-      color: #fff;
-      transition: 0.3s;
-      border: 1px solid rgba(255,255,255,0.1);
     }
 
-    .badge i { font-size: 1rem; }
-    .b-python { background: #3776ab; }
-    .b-sql { background: #f29111; }
-    .b-pandas { background: #150458; }
-    .b-rpa { background: #ff4b4b; }
-    .b-excel { background: #1d6f42; }
+    .tech-pill:hover {
+      border-color: var(--primary);
+      transform: translateY(-5px);
+      box-shadow: 0 10px 20px rgba(56, 189, 248, 0.15);
+      background: rgba(56, 189, 248, 0.05);
+      cursor: pointer;
+    }
 
-    .badge:hover { transform: translateY(-3px); filter: brightness(1.2); }
+    .dot { width: 8px; height: 8px; border-radius: 50%; }
 
-    /* --- GRID PROJETOS --- */
+    /* --- Grid de Experiência --- */
+    .section { padding: 100px 0; }
+    
     .grid {
       display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
       gap: 25px;
-      width: min(100% - 40px, 1200px);
-      margin: 0 auto 80px;
     }
 
     .card {
-      background: var(--card-bg);
+      background: var(--card);
       border: 1px solid var(--border);
-      padding: 35px;
-      border-radius: 8px;
-      box-shadow: 0 15px 35px -15px rgba(0,0,0,0.5);
-      transition: 0.3s;
+      padding: 40px;
+      border-radius: 24px;
+      transition: 0.4s;
+      position: relative;
+      overflow: hidden;
     }
 
     .card:hover {
-      border-color: var(--primary);
-      box-shadow: 0 0 30px rgba(56, 189, 248, 0.15);
+      background: rgba(15, 23, 42, 0.9);
+      border-color: rgba(56, 189, 248, 0.4);
     }
 
-    .card h3 { font-family: 'Space Grotesk', sans-serif; color: var(--primary); margin-bottom: 12px; }
+    .card h3 { font-family: 'Space Grotesk', sans-serif; font-size: 1.8rem; margin-bottom: 15px; }
+    .card p { color: #94a3b8; font-size: 1.1rem; }
 
+    /* --- Botão Magnético --- */
     .cta-btn {
-      display: inline-block;
-      padding: 18px 40px;
-      background: var(--primary);
+      margin-top: 50px;
+      padding: 20px 45px;
+      background: var(--text);
       color: var(--bg);
+      border-radius: 12px;
+      font-weight: 700;
+      font-family: 'Space Grotesk', sans-serif;
       text-decoration: none;
-      font-weight: 800;
-      border-radius: 4px;
+      display: inline-block;
       transition: 0.3s;
-      text-transform: uppercase;
-      letter-spacing: 1px;
+      font-size: 1.2rem;
     }
 
-    .cta-btn:hover { background: #fff; box-shadow: 0 0 20px var(--primary); }
+    .cta-btn:hover {
+      background: var(--primary);
+      transform: scale(1.05);
+      cursor: pointer;
+    }
 
     footer {
-      padding: 60px 0;
+      padding: 80px 0;
       text-align: center;
       border-top: 1px solid var(--border);
-      color: var(--text-dim);
-      font-size: 0.9rem;
+      color: #475569;
+      font-weight: 600;
+      letter-spacing: 2px;
     }
 
-    @media (max-width: 600px) {
-      .hero { padding-top: 20px; }
-      .nav-inner .name { display: none; }
+    /* Animação suave de entrada */
+    @keyframes fadeInUp {
+      from { opacity: 0; transform: translateY(30px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    .reveal { animation: fadeInUp 1s forwards; }
+
+    @media (max-width: 800px) {
+      .hero h1 { font-size: 3.5rem; }
     }
   </style>
 </head>
 <body>
 
-  <div class="math-bg">Δ</div>
+  <div class="apice-bg"></div>
+  <div class="apice-logo-fixed">Δ</div>
 
   <nav>
     <div class="nav-inner">
-      <div class="logo"><span>Δ</span> DATA ÁPICE</div>
-      <div class="name" style="font-weight: 600; color: var(--primary); font-size: 0.8rem;">THIAGO DUMONT</div>
+      <div class="logo-text"><span class="logo-symbol">Δ</span> DATA ÁPICE</div>
+      <div style="font-weight: 600; color: var(--primary); font-size: 0.9rem;">THIAGO DUMONT</div>
     </div>
   </nav>
 
-  <main>
-    <section class="hero">
-      <h1>AUTOMAÇÃO E <br><span style="color:var(--primary)">INTELIGÊNCIA</span> DE DADOS.</h1>
-      <p>
-        Matemático e Especialista em <strong>RPA & Automação</strong>. 
-        Transformo grandes volumes de dados em fluxos de trabalho autônomos e eficientes.
+  <main class="container">
+    
+    <section class="hero reveal">
+      <h1>CONSTRUINDO O <br><span class="gradient-text">PRÓXIMO NÍVEL</span> <br>DOS SEUS DADOS.</h1>
+      <p style="font-size: 1.5rem; color: #94a3b8; max-width: 800px; margin-top: 20px;">
+        Cientista de Dados focado em arquitetura de dados e automação RPA para pipelines de alta performance.
       </p>
 
-      <div class="tech-badges">
-        <div class="badge b-python"><i class="fab fa-python"></i> PYTHON</div>
-        <div class="badge b-pandas"><i class="fas fa-table"></i> PANDAS</div>
-        <div class="badge b-sql"><i class="fas fa-database"></i> SQL_SERVER</div>
-        <div class="badge b-rpa"><i class="fas fa-robot"></i> RPA_BOT</div>
-        <div class="badge b-excel"><i class="far fa-file-excel"></i> EXCEL_VBA</div>
+      <div class="tech-stack">
+        <div class="tech-pill"><div class="dot" style="background: #3776ab;"></div> PYTHON</div>
+        <div class="tech-pill"><div class="dot" style="background: #150458;"></div> PANDAS</div>
+        <div class="tech-pill"><div class="dot" style="background: #00758f;"></div> SQL_ENGINE</div>
+        <div class="tech-pill"><div class="dot" style="background: #1d6f42;"></div> EXCEL_PRO</div>
+        <div class="tech-pill"><div class="dot" style="background: #e34f26;"></div> AUTOMATION_RPA</div>
       </div>
 
-      <a href="mailto:data.apice@gmail.com" class="cta-btn">Solicitar Automação</a>
+      <a href="mailto:data.apice@gmail.com" class="cta-btn">INICIAR CONEXÃO</a>
     </section>
 
-    <div class="grid">
-      <div class="card">
-        <h3>Funil iFood</h3>
-        <p>Análise estatística para otimização de conversão e predição de comportamento.</p>
+    <section class="section">
+      <h2 style="font-family: 'Space Grotesk'; font-size: 3rem; margin-bottom: 50px;">PROJETOS EM DESTAQUE</h2>
+      <div class="grid">
+        <div class="card">
+          <h3>Funil iFood</h3>
+          <p>Modelagem estatística para predição de comportamento e otimização de conversão.</p>
+        </div>
+        <div class="card">
+          <h3>Observatório MG</h3>
+          <p>Pipeline de extração automatizada de dados públicos com arquitetura SQL escalável.</p>
+        </div>
+        <div class="card">
+          <h3>Parsing Inteligente</h3>
+          <p>Motores de extração via Regex para documentos não estruturados em escala industrial.</p>
+        </div>
       </div>
-      <div class="card">
-        <h3>Observatório MG</h3>
-        <p>Bot de extração e estruturação de dados de editais públicos em tempo real.</p>
-      </div>
-      <div class="card">
-        <h3>PDF RPA Parser</h3>
-        <p>Automação de leitura e extração de dados estruturados de documentos complexos.</p>
-      </div>
-    </div>
+    </section>
+
   </main>
 
   <footer>
-    THIAGO DUMONT // © 2026 // DATA.APICE@GMAIL.COM
+    THIAGO DUMONT // DATA.APICE@GMAIL.COM // 2026
   </footer>
+
+  <script>
+    // Pequeno efeito magnético para o símbolo de fundo seguir o scroll levemente
+    window.addEventListener('scroll', () => {
+      const scroll = window.pageYOffset;
+      document.querySelector('.apice-logo-fixed').style.transform = `translateY(${scroll * 0.2}px)`;
+    });
+  </script>
 
 </body>
 </html>
-
